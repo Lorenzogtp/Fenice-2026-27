@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07383E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="application-name" content="La Fenice 2026–27">
+<meta name="apple-mobile-web-app-title" content="Fenice 26–27">
+<meta name="description" content="Calendario operativo La Fenice 2026–27 con ODG integrati, ricerca, filtri e aggiornamento online.">
+
+<title>La Fenice · Prospetto, Manifestazioni e ODG 2026–27</title>
+<style>
+:root{
+  color-scheme:light;
+  --notte:#07383E;
+  --notte-2:#0B4A51;
+  --laguna:#12606A;
+  --laguna-chiaro:#E5F0EF;
+  --ottone:#C9A84D;
+  --ottone-scuro:#856A20;
+  --fondo:#F4F5F3;
+  --carta:#FFFFFF;
+  --ink:#172321;
+  --muted:#667572;
+  --riga:#DDE5E2;
+  --riga-forte:#C8D4D0;
+  --festivo:#FFF0EA;
+  --oggi:#FFF7D9;
+  --ombra:0 8px 24px rgba(12,46,45,.08);
+  --c-fenice:#962D43;
+  --c-sale:#9B792A;
+  --c-malibran:#12606A;
+  --c-tour:#554786;
+  --radius:18px;
+  --desktop-sticky:76px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--fondo)}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--fondo);
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.48;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid rgba(201,168,77,.75);
+  outline-offset:2px;
+}
+[hidden]{display:none!important}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.skip-link{position:fixed;left:12px;top:-80px;z-index:200;background:#fff;color:var(--ink);padding:10px 14px;border-radius:10px}
+.skip-link:focus{top:12px}
+
+/* Testata */
+.appbar{
+  position:sticky;
+  top:0;
+  z-index:80;
+  color:#fff;
+  background:linear-gradient(135deg,var(--notte),var(--notte-2));
+  border-bottom:3px solid var(--ottone);
+  box-shadow:0 8px 20px rgba(7,56,62,.18);
+  padding-top:env(safe-area-inset-top);
+}
+.appbar-inner{max-width:1440px;margin:0 auto;padding:12px 14px 11px}
+.brand-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{min-width:0;display:flex;align-items:center;gap:11px}
+.brand-mark{
+  width:38px;height:38px;flex:0 0 38px;border:1px solid rgba(255,255,255,.24);border-radius:12px;
+  display:grid;place-items:center;color:var(--ottone);font-weight:900;letter-spacing:-.06em;background:rgba(255,255,255,.07)
+}
+.brand-copy{min-width:0}
+.brand-title{font-size:17px;line-height:1.1;font-weight:850;letter-spacing:.025em;white-space:nowrap}
+.brand-subtitle{margin-top:3px;color:#C8DCDA;font-size:12px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-actions{display:flex;align-items:center;gap:7px}
+.icon-button{
+  min-width:42px;height:42px;border:1px solid rgba(255,255,255,.22);border-radius:12px;
+  background:rgba(255,255,255,.08);color:#fff;display:inline-grid;place-items:center;font-weight:800
+}
+.icon-button:hover{background:rgba(255,255,255,.15)}
+.icon-button .label{display:none}
+
+.search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:11px}
+.search-wrap{position:relative}
+.search-wrap svg{position:absolute;left:14px;top:50%;width:19px;height:19px;transform:translateY(-50%);stroke:var(--muted);fill:none;stroke-width:2.2;pointer-events:none}
+.search-wrap input{
+  width:100%;height:48px;border:0;border-radius:14px;background:#fff;color:var(--ink);
+  padding:0 46px 0 43px;font-size:16px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)
+}
+.search-wrap input::placeholder{color:#7A8784}
+.clear-search{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;border-radius:50%;
+  background:#E9EEEC;color:var(--ink);font-weight:850
+}
+.filter-toggle{
+  height:48px;border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:0 14px;
+  background:rgba(255,255,255,.11);color:#fff;font-weight:800;display:flex;align-items:center;gap:8px
+}
+.filter-dot{width:8px;height:8px;border-radius:50%;background:var(--ottone);display:none}
+.filter-toggle.has-filters .filter-dot{display:inline-block}
+
+.quick-row{display:flex;gap:7px;overflow:auto;margin-top:9px;padding-bottom:1px;scrollbar-width:none}
+.quick-row::-webkit-scrollbar{display:none}
+.quick{
+  flex:0 0 auto;min-height:36px;border:1px solid rgba(255,255,255,.2);border-radius:999px;
+  padding:7px 12px;background:rgba(255,255,255,.08);color:#EAF2F1;font-size:13px;font-weight:750
+}
+.quick:hover{background:rgba(255,255,255,.15)}
+.quick.active{background:var(--ottone);border-color:var(--ottone);color:var(--notte)}
+
+.active-strip{max-width:1440px;margin:0 auto;padding:8px 14px 10px;display:flex;align-items:center;gap:8px;overflow:auto;scrollbar-width:none;background:rgba(2,32,36,.18)}
+.active-strip::-webkit-scrollbar{display:none}
+.active-label{flex:0 0 auto;color:#BCD2CF;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.active-chip{
+  flex:0 0 auto;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 10px;
+  background:rgba(255,255,255,.11);color:#fff;font-size:12px;font-weight:700
+}
+.active-chip:hover{background:rgba(255,255,255,.18)}
+
+/* Struttura */
+.page-shell{max-width:1440px;margin:0 auto;padding:14px 12px 72px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.filters{
+  position:fixed;z-index:110;inset:auto 0 0 0;max-height:min(86vh,760px);overflow:auto;
+  transform:translateY(105%);transition:transform .22s ease;background:var(--carta);
+  border-radius:24px 24px 0 0;box-shadow:0 -18px 44px rgba(0,0,0,.22);padding:0 16px calc(18px + env(safe-area-inset-bottom))
+}
+.filters.open{transform:translateY(0)}
+.filter-head{position:sticky;top:0;z-index:2;background:var(--carta);display:flex;align-items:center;justify-content:space-between;padding:16px 0 12px;border-bottom:1px solid var(--riga)}
+.filter-head h2{margin:0;font-size:19px}
+.close-filters{width:40px;height:40px;border:0;border-radius:12px;background:#EDF1EF;color:var(--ink);font-size:20px;font-weight:800}
+.backdrop{position:fixed;z-index:100;inset:0;background:rgba(6,33,35,.48);backdrop-filter:blur(2px)}
+.filter-group{padding:16px 0;border-bottom:1px solid var(--riga)}
+.filter-group:last-of-type{border-bottom:0}
+.filter-label{display:block;margin-bottom:8px;color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.control{
+  width:100%;height:46px;border:1px solid var(--riga-forte);border-radius:12px;background:#fff;color:var(--ink);padding:0 12px
+}
+.filter-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.choice{
+  min-height:44px;border:1px solid var(--riga);border-radius:12px;background:#fff;color:var(--ink);
+  padding:8px 10px;text-align:left;font-size:13px;font-weight:750;display:flex;align-items:center;gap:8px
+}
+.choice:hover{border-color:#AABBB6;background:#FAFBFA}
+.choice.active{background:var(--notte);border-color:var(--notte);color:#fff}
+.choice.venue.active{background:var(--choice-color);border-color:var(--choice-color)}
+.venue-dot{width:10px;height:10px;flex:0 0 10px;border-radius:50%;background:var(--choice-color)}
+.choice.active .venue-dot{background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.28)}
+.filter-footer{position:sticky;bottom:0;background:linear-gradient(to top,#fff 74%,rgba(255,255,255,0));padding:18px 0 2px;display:grid;grid-template-columns:1fr 1.3fr;gap:9px}
+.secondary-button,.primary-button{
+  min-height:46px;border-radius:13px;padding:10px 14px;font-weight:800
+}
+.secondary-button{border:1px solid var(--riga-forte);background:#fff;color:var(--ink)}
+.primary-button{border:0;background:var(--ottone);color:var(--notte)}
+
+/* Risultati */
+.content{min-width:0}
+.odg-global-note{
+  margin:2px 0 14px;padding:11px 13px;border:1px solid #BCD2CF;border-radius:14px;
+  background:#EDF5F3;color:#244541;font-size:13px;line-height:1.45
+}
+.odg-global-note strong{color:var(--notte)}
+@media print{.odg-global-note{display:none!important}}
+.results-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:2px 2px 13px}
+.results-kicker{color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+.results-count{margin-top:2px;font-size:22px;font-weight:850;letter-spacing:-.025em}
+.results-actions{display:flex;gap:8px}
+.small-action{border:1px solid var(--riga-forte);border-radius:11px;background:#fff;color:var(--ink);padding:9px 11px;font-size:13px;font-weight:750}
+.month-heading{position:relative;top:auto;z-index:35;display:flex;align-items:center;gap:10px;margin:18px 0 10px;padding:7px 3px;background:linear-gradient(to right,var(--fondo) 80%,rgba(244,245,243,0))}
+.month-heading:first-child{margin-top:0}
+.month-heading strong{font-size:20px;letter-spacing:-.02em}
+.month-heading span{color:var(--muted);font-size:13px;font-weight:750}
+.month-heading::after{content:"";height:1px;flex:1;background:var(--riga-forte)}
+.day-card{
+  position:relative;display:grid;grid-template-columns:68px minmax(0,1fr);overflow:hidden;
+  margin-bottom:10px;border:1px solid var(--riga);border-radius:var(--radius);background:var(--carta);box-shadow:0 2px 8px rgba(15,54,52,.045)
+}
+.day-card:hover{border-color:#C6D3CF;box-shadow:var(--ombra)}
+.day-card.today{border:2px solid var(--ottone);box-shadow:0 8px 24px rgba(133,106,32,.14)}
+.day-rail{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100%;padding:13px 4px;
+  background:var(--laguna-chiaro);border-right:1px solid #D2E2DF
+}
+.day-card.holiday .day-rail{background:var(--festivo);border-right-color:#F4D9CD}
+.day-card.today .day-rail{background:var(--oggi)}
+.day-number{font-size:27px;line-height:1;font-weight:900;color:var(--laguna);letter-spacing:-.04em}
+.day-card.sunday .day-number,.day-card.holiday .day-number{color:var(--c-fenice)}
+.day-week{margin-top:5px;color:var(--muted);font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.day-month{margin-top:2px;color:var(--muted);font-size:10px;font-weight:700;text-transform:uppercase}
+.day-body{min-width:0;padding:11px 13px 12px}
+.day-meta{display:flex;align-items:center;gap:6px;margin-bottom:3px;min-height:20px}
+.share-day{margin-left:auto;border:1px solid var(--riga);background:var(--carta);color:var(--muted);
+ font:inherit;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px}
+.share-day:active{background:var(--laguna-chiaro);color:var(--laguna)}
+@media print{.share-day{display:none}}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:850;letter-spacing:.04em;text-transform:uppercase}
+.badge.today-badge{background:var(--ottone);color:var(--notte)}
+.badge.holiday-badge{background:#F9DED2;color:#8E3C2B}
+.event-row{position:relative;padding:8px 0 8px 15px;border-top:1px dashed var(--riga);overflow-wrap:anywhere}
+.event-row:first-of-type{border-top:0}
+.event-row::before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;border-radius:50%;background:var(--venue-color)}
+.venue-name{display:block;margin-bottom:2px;color:var(--venue-color);font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.event-text{font-size:14.5px;line-height:1.46}
+.event-text strong{font-weight:850}
+.empty-day{padding:10px 0;color:var(--muted);font-size:14px;font-style:italic}
+mark{background:#FFE27A;color:inherit;border-radius:3px;padding:0 1px}
+.no-results{text-align:center;padding:55px 20px;color:var(--muted)}
+.no-results-icon{font-size:34px;margin-bottom:8px}
+.load-more{display:block;margin:18px auto 4px;border:0;border-radius:999px;background:var(--notte);color:#fff;padding:13px 22px;font-weight:800;box-shadow:0 6px 16px rgba(7,56,62,.2)}
+.load-more:hover{background:var(--notte-2)}
+.back-top{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;width:48px;height:48px;border:0;border-radius:50%;background:var(--ottone);color:var(--notte);font-size:21px;font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.24)}
+
+
+/* Ricerca completa: tutti i comandi originali restano sempre visibili */
+.filter-toggle,.close-filters,.backdrop{display:none!important}
+.filters{
+  position:relative;z-index:20;inset:auto;max-height:none;overflow:visible;transform:none;
+  transition:none;border:1px solid var(--riga);border-radius:20px;box-shadow:0 4px 16px rgba(18,59,57,.06);
+  padding:0 14px 14px
+}
+.filter-head{position:relative;padding:15px 0 11px}
+.filter-head h2::after{content:" · ricerca completa";color:var(--muted);font-size:12px;font-weight:700}
+.direct-scroll{display:flex;gap:8px;overflow-x:auto;padding:1px 1px 7px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.direct-scroll::-webkit-scrollbar{display:none}
+.filter-chip{
+  flex:0 0 auto;min-height:40px;border:1px solid var(--riga-forte);border-radius:999px;
+  background:#fff;color:var(--ink);padding:8px 13px;font-size:13px;font-weight:780;white-space:nowrap
+}
+.filter-chip:hover{border-color:#9EAFAB;background:#FAFBFA}
+.filter-chip.active{background:var(--notte);border-color:var(--notte);color:#fff}
+.title-scroll .filter-chip{border-radius:12px}
+.filter-footer{position:relative;grid-template-columns:1fr;padding-top:15px;background:#fff}
+.filter-footer .primary-button{display:none}
+@media (max-width:959px){
+  .page-shell{padding-top:12px}
+  .layout{gap:14px}
+  .filters{order:0}
+  .content{order:1}
+  .filter-group{padding:13px 0}
+  .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (min-width:640px){
+  .appbar-inner{padding-left:20px;padding-right:20px}
+  .page-shell{padding-left:20px;padding-right:20px}
+  .filter-grid{grid-template-columns:1fr 1fr}
+  .choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .day-card{grid-template-columns:82px minmax(0,1fr)}
+  .day-body{padding:12px 17px 14px}
+  .event-row{display:grid;grid-template-columns:145px minmax(0,1fr);gap:13px;padding-left:17px}
+  .venue-name{margin:0;padding-top:1px}
+}
+@media (min-width:960px) and (hover:hover) and (pointer:fine){
+  .appbar{position:sticky}
+  .appbar-inner{display:grid;grid-template-columns:320px minmax(0,1fr) auto;align-items:center;gap:18px;padding-top:14px;padding-bottom:13px}
+  .brand-row{grid-column:1}
+  .brand-title{font-size:18px}
+  .search-row{grid-column:2;margin:0;display:block}
+  .quick-row{grid-column:3;margin:0;overflow:visible}
+  .quick{min-height:40px}
+  .active-strip{padding-left:20px;padding-right:20px}
+  .page-shell{padding-top:22px}
+  .layout{grid-template-columns:292px minmax(0,1fr);align-items:start;gap:24px}
+  .filters{position:sticky;top:var(--desktop-sticky);z-index:30;max-height:calc(100vh - var(--desktop-sticky) - 20px);overflow:auto;padding:0 16px 16px}
+  .filter-head{padding-top:16px}
+  .filter-footer{grid-template-columns:1fr;padding-top:14px}
+  .choice-grid{grid-template-columns:1fr 1fr}
+  .month-heading{position:sticky;top:var(--desktop-sticky)}
+  .day-card{grid-template-columns:90px minmax(0,1fr);margin-bottom:12px}
+  .day-number{font-size:30px}
+  .results-count{font-size:25px}
+  .icon-button .label{display:inline}
+}
+@media (min-width:1220px){
+  .event-row{grid-template-columns:170px minmax(0,1fr)}
+  .event-text{font-size:15px}
+}
+
+/* Compatibilità Google Chrome / Android */
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+button,input,select{
+  max-width:100%;
+  -webkit-tap-highlight-color:transparent;
+}
+button{touch-action:manipulation}
+input[type="search"],input[type="date"]{
+  min-width:0;
+  -webkit-appearance:none;
+  appearance:none;
+  color-scheme:light;
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+  opacity:.78;
+  cursor:pointer;
+}
+.event-row,.event-text,.brand-subtitle{
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  word-break:break-word;
+}
+.direct-scroll,.quick-row,.active-strip{
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* Su telefoni e tablet touch Chrome mantiene sempre una visualizzazione ampia e leggibile,
+   anche quando è attiva l'opzione "Sito desktop". */
+@media (hover:none), (pointer:coarse){
+  .page-shell{max-width:760px;margin-left:auto;margin-right:auto}
+  .layout{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+  .filters{
+    position:relative!important;
+    top:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+    width:100%!important;
+  }
+  .content{min-width:0;width:100%}
+  .month-heading{position:relative!important;top:auto!important}
+}
+
+@media (max-width:639px), ((hover:none) and (pointer:coarse)){
+  body{font-size:17px;line-height:1.52}
+  .appbar-inner{padding:10px 10px 10px}
+  .brand-row{gap:8px}
+  .brand{gap:8px}
+  .brand-mark{width:34px;height:34px;flex-basis:34px;border-radius:10px;font-size:13px}
+  .brand-title{font-size:16px}
+  .brand-subtitle{font-size:11px}
+  .icon-button{min-width:40px;height:40px}
+  .search-row{grid-template-columns:minmax(0,1fr);margin-top:9px}
+  .search-wrap input{height:50px;font-size:17px;padding-left:42px}
+  .quick-row{gap:6px;margin-top:8px}
+  .quick{min-height:40px;padding:8px 12px;font-size:13px}
+  .page-shell{padding:10px 8px 76px}
+  .filters{border-radius:15px;padding:0 10px 12px}
+  .filter-head{padding:13px 0 9px}
+  .filter-head h2{font-size:18px}
+  .filter-group{padding:12px 0}
+  .filter-label{font-size:11px;margin-bottom:7px}
+  .control{height:50px;font-size:17px;padding:0 12px}
+  .filter-chip{min-height:44px;padding:9px 13px;font-size:14px}
+  .choice{min-height:48px;padding:9px 10px;font-size:14px}
+  .results-head{align-items:center;margin:2px 2px 11px}
+  .results-count{font-size:22px}
+  .small-action{min-height:42px;padding:8px 10px}
+  .month-heading{margin:15px 0 8px;padding:6px 2px}
+  .month-heading strong{font-size:20px}
+  .day-card{grid-template-columns:62px minmax(0,1fr);border-radius:14px;margin-bottom:9px}
+  .day-rail{padding:12px 3px}
+  .day-number{font-size:27px}
+  .day-body{padding:10px 10px 11px}
+  .event-row{padding:8px 0 8px 14px}
+  .venue-name{font-size:10.5px;letter-spacing:.07em}
+  .event-text{font-size:15.5px;line-height:1.5}
+  .load-more{min-height:48px;font-size:16px}
+}
+
+@media (max-width:380px){
+  .choice-grid{grid-template-columns:1fr}
+  .brand-subtitle{display:none}
+  .results-head{align-items:flex-start}
+  .small-action{font-size:12px}
+  .day-card{grid-template-columns:57px minmax(0,1fr)}
+  .day-number{font-size:25px}
+}
+
+/* Dettaglio Ordine del Giorno */
+.odg-button{
+  border:1px solid #D7C17B;background:#FFF8E2;color:#624E16;font:inherit;font-size:11.5px;font-weight:800;
+  padding:4px 10px;border-radius:999px;white-space:nowrap
+}
+.odg-button:hover,.odg-button:active{background:#FBEAB2}
+.odg-button.odg-online{
+  border-color:#BCD2CF;background:#EDF5F3;color:#0B4A51
+}
+.odg-button.odg-online:hover,.odg-button.odg-online:active{background:#DDEDEA}
+.odg-badge{background:#E5F0EF;color:#0B4A51}
+.odg-dialog{
+  position:fixed;z-index:180;inset:0;display:grid;place-items:end center;padding:0;background:rgba(4,28,31,.58);
+  backdrop-filter:blur(3px)
+}
+.odg-panel{
+  width:min(820px,100%);max-height:92vh;overflow:auto;background:#F7F8F6;color:var(--ink);
+  border-radius:24px 24px 0 0;box-shadow:0 -20px 60px rgba(0,0,0,.28);padding-bottom:calc(18px + env(safe-area-inset-bottom))
+}
+.odg-head{
+  position:sticky;top:0;z-index:3;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+  padding:17px 17px 14px;background:linear-gradient(135deg,var(--notte),var(--notte-2));color:#fff;border-bottom:3px solid var(--ottone)
+}
+.odg-kicker{color:#C8DCDA;font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.odg-title{margin:3px 0 0;font-size:22px;line-height:1.18;letter-spacing:-.02em}
+.odg-close{width:42px;height:42px;flex:0 0 42px;border:1px solid rgba(255,255,255,.25);border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font-size:20px;font-weight:900}
+.odg-content{padding:14px}
+.odg-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.odg-action{min-height:42px;border:1px solid var(--riga-forte);border-radius:12px;background:#fff;color:var(--ink);padding:8px 12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center}
+.odg-action.primary{border-color:var(--notte);background:var(--notte);color:#fff}
+.odg-source{margin:0 0 13px;padding:10px 12px;border:1px solid #E7D89F;border-radius:12px;background:#FFF8E2;color:#66531D;font-size:13px}
+.odg-section{margin:0 0 12px;border:1px solid var(--riga);border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 2px 8px rgba(15,54,52,.04)}
+.odg-section h3{margin:0;padding:10px 13px;background:#EAF1EF;color:var(--notte);font-size:15px;letter-spacing:.01em}
+.odg-rows{padding:3px 12px 7px}
+.odg-row{display:grid;grid-template-columns:100px 120px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px dashed var(--riga);font-size:14px;line-height:1.4}
+.odg-row:first-child{border-top:0}
+.odg-unit{font-weight:850;color:#42514E}
+.odg-time{font-variant-numeric:tabular-nums;font-weight:850;color:var(--notte)}
+.odg-note{overflow-wrap:anywhere}
+.odg-footnote{margin:0 12px 10px;padding:9px 10px;border-radius:10px;background:#FFF8E2;color:#66531D;font-size:13px}
+body.odg-open{overflow:hidden}
+@media (min-width:760px){.odg-dialog{place-items:center;padding:22px}.odg-panel{border-radius:24px;max-height:90vh}.odg-head{border-radius:24px 24px 0 0}}
+@media (max-width:560px){
+  .day-meta{flex-wrap:wrap}.share-day{margin-left:auto}
+  .odg-row{grid-template-columns:1fr 1.15fr;gap:5px 9px}
+  .odg-note{grid-column:1/-1;padding-top:1px}
+  .odg-title{font-size:20px}
+}
+@media print{.odg-button,.odg-dialog{display:none!important}}
+
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;font-size:10pt}
+  .appbar{position:static;background:#fff;color:#000;border-bottom:2px solid #000;box-shadow:none}
+  .brand-mark{border-color:#aaa;color:#000;background:#fff}
+  .brand-title,.brand-subtitle{color:#000}
+  .search-row,.quick-row,.active-strip,.filters,.results-actions,.load-more,.back-top{display:none!important}
+  .page-shell{max-width:none;padding:8px 0}
+  .layout{display:block}
+  .month-heading{position:static;background:#fff;break-after:avoid}
+  .day-card{box-shadow:none;break-inside:avoid;border-radius:8px;margin-bottom:5px;grid-template-columns:55px 1fr}
+  .day-rail{padding:8px 2px}
+  .day-number{font-size:19pt}
+  .day-body{padding:7px 10px}
+  .event-row{display:grid;grid-template-columns:105px 1fr;gap:8px;padding:4px 0 4px 12px}
+  .event-text{font-size:9pt}
+}
+
+
+/* Manifestazioni ricavate dalle sezioni ODG incorporate */
+:root{--c-manifestazioni:#8B4B87;--manifestazioni-bg:#F8EFF7}
+.manifestazioni-odg{
+  position:relative;margin-top:9px;padding:10px 11px 10px 15px;
+  border:1px solid #E4CFE1;border-radius:13px;background:var(--manifestazioni-bg)
+}
+.manifestazioni-odg::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+  border-radius:13px 0 0 13px;background:var(--c-manifestazioni)
+}
+.manifestazioni-title{
+  display:flex;align-items:center;gap:7px;margin-bottom:6px;color:var(--c-manifestazioni);
+  font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase
+}
+.manifestazioni-row{font-size:14px;line-height:1.43;padding:4px 0;overflow-wrap:anywhere}
+.manifestazioni-row + .manifestazioni-row{border-top:1px dashed #DEC8DB}
+.manifestazioni-unit,.manifestazioni-time{font-weight:850}
+.manifestazioni-source{margin-top:6px;color:#766074;font-size:11.5px;font-weight:650}
+.choice[data-type="manifestazione"].active{
+  background:var(--c-manifestazioni)!important;border-color:var(--c-manifestazioni)!important;color:#fff!important
+}
+.day-card.manifestation-day{border-color:#DEC8DB}
+@media print{.manifestazioni-source{display:none!important}}
+.event-row.malibran-manifestazione{
+  margin:6px 0;padding:10px 11px 10px 16px;border:1px solid #E4CFE1!important;
+  border-radius:13px;background:#F8EFF7
+}
+.event-row.malibran-manifestazione::before{background:var(--c-manifestazioni)!important}
+.event-row.malibran-manifestazione .venue-name{color:var(--c-manifestazioni)!important}
+.event-row.malibran-manifestazione .event-text{color:#4D2F4A}
+.event-row.malibran-manifestazione + .event-row{border-top:0}
+@media print{.event-row.malibran-manifestazione{background:#fff;border:1px solid #B7B7B7!important}}
+
+
+/* Aggiornamento PWA */
+.update-button{position:relative;font-size:20px;line-height:1}
+.update-button.is-checking{animation:fenice-spin .9s linear infinite}
+.update-button.has-update::after{content:"";position:absolute;right:4px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--ottone);box-shadow:0 0 0 2px var(--notte)}
+@keyframes fenice-spin{to{transform:rotate(360deg)}}
+.update-banner{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:180;width:min(92vw,560px);padding:12px 14px;border-radius:14px;background:#fff;color:var(--ink);box-shadow:0 14px 35px rgba(0,0,0,.22);border:1px solid var(--riga-forte);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.update-banner[hidden]{display:none!important}
+.update-copy{min-width:0;font-size:13px;line-height:1.35}.update-copy strong{display:block;font-size:14px}
+.update-actions{display:flex;gap:7px;flex:0 0 auto}.update-actions button{border:0;border-radius:10px;padding:9px 11px;font-weight:800}.update-now{background:var(--notte);color:#fff}.update-later{background:#EDF1F0;color:var(--ink)}
+.version-badge{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:25;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);border:1px solid var(--riga);border-radius:999px;padding:4px 8px;font-size:10px;font-weight:750;color:var(--muted);pointer-events:none}
+@media(max-width:560px){.version-badge{display:none}.update-banner{align-items:flex-start}.update-actions{flex-direction:column}}
+
+</style>
+</head>
+<body>
+<noscript><div style="margin:12px;padding:14px;border:2px solid #C9A84D;border-radius:12px;background:#FFF7D9;color:#172321;font-family:Arial,sans-serif;font-size:16px;line-height:1.45"><strong>JavaScript non è attivo.</strong><br>Per utilizzare ricerca e filtri, abiliti JavaScript in Google Chrome e riapra il file.</div></noscript>
+<a class="skip-link" href="#risultati">Vai ai risultati</a>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">LF</div>
+        <div class="brand-copy">
+          <div class="brand-title">LA FENICE · 2026–27</div>
+          <div class="brand-subtitle">Calendario operativo · Manifestazioni evidenziate · aggiornabile</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-button update-button" id="updateBtn" type="button" aria-label="Controlla aggiornamenti" title="Aggiorna">↻<span class="label"> Aggiorna</span></button>
+        <button class="icon-button" id="printBtn" type="button" aria-label="Stampa il prospetto" title="Stampa">⎙<span class="label"> Stampa</span></button>
+      </div>
+    </div>
+
+    <div class="search-row">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.8-3.8"></path></svg>
+        <label class="visually-hidden" for="q">Cerca nel prospetto</label>
+        <input id="q" type="search" placeholder="Cerca (anche più parole): carmen generale…" enterkeyhint="search" autocomplete="off" spellcheck="false">
+        <button class="clear-search" id="clearSearch" type="button" aria-label="Cancella la ricerca" hidden>✕</button>
+      </div>
+      <button class="filter-toggle" id="filterToggle" type="button" aria-controls="filters" aria-expanded="false"><span class="filter-dot" aria-hidden="true"></span>Filtri</button>
+    </div>
+
+    <nav class="quick-row" aria-label="Filtri rapidi per periodo">
+      <button class="quick" type="button" data-range="today">Oggi</button>
+      <button class="quick" type="button" data-range="week">Questa settimana</button>
+      <button class="quick" type="button" data-range="month">Questo mese</button>
+      <button class="quick" type="button" data-range="30days">30 giorni</button>
+    </nav>
+  </div>
+  <div class="active-strip" id="activeStrip" hidden aria-label="Filtri attivi"></div>
+</header>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<div class="page-shell">
+  <div class="layout">
+    <aside class="filters" id="filters" aria-label="Filtri del calendario">
+      <div class="filter-head">
+        <h2>Filtri</h2>
+        <button class="close-filters" id="closeFilters" type="button" aria-label="Chiudi filtri">✕</button>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="daySelect">Scegli un giorno dal calendario</label>
+        <input class="control" type="date" id="daySelect">
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Mese</span>
+        <div class="direct-scroll" id="monthChoices" aria-label="Seleziona un mese"></div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Titolo / produzione</span>
+        <div class="direct-scroll title-scroll" id="titleChoices" aria-label="Seleziona un titolo o una produzione"></div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Sezione / sede</span>
+        <div class="choice-grid" id="venueChoices">
+          <button class="choice venue" type="button" data-venue="0" style="--choice-color:var(--c-fenice)"><span class="venue-dot"></span>Fenice</button>
+          <button class="choice venue" type="button" data-venue="1" style="--choice-color:var(--c-sale)"><span class="venue-dot"></span>Altre sale</button>
+          <button class="choice venue" type="button" data-venue="2" style="--choice-color:var(--c-malibran)"><span class="venue-dot"></span>Malibran</button>
+          <button class="choice venue" type="button" data-venue="3" style="--choice-color:var(--c-tour)"><span class="venue-dot"></span>Tournée</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Tipo di attività</span>
+        <div class="choice-grid" id="typeChoices">
+          <button class="choice" type="button" data-type="recita">🎭 Recite</button>
+          <button class="choice" type="button" data-type="concerto">🎼 Concerti</button>
+          <button class="choice" type="button" data-type="generale">Generali</button>
+          <button class="choice" type="button" data-type="prove">Prove</button>
+          <button class="choice" type="button" data-type="allestimento">Allestimenti</button>
+          <button class="choice" type="button" data-type="riposo">Riposi / ferie</button>
+          <button class="choice" type="button" data-type="festivo">Festivi</button>
+          <button class="choice" type="button" data-type="manifestazione">◆ Manifestazioni</button>
+        </div>
+      </div>
+
+      <div class="filter-footer">
+        <button class="secondary-button" id="resetFilters" type="button">Togli tutti i filtri</button>
+        <button class="primary-button" id="applyFilters" type="button">Mostra risultati</button>
+      </div>
+    </aside>
+
+    <main class="content" id="mainContent">
+      <div class="odg-global-note">
+      <div style="display:inline-flex;margin:0 0 8px;padding:5px 9px;border-radius:999px;background:#8B4B87;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em">MANIFESTAZIONI MALIBRAN IN VIOLA</div>
+      
+        <strong>Manifestazioni visibili:</strong> la prima voce del prospetto giornaliero è ora mostrata in un riquadro viola <strong>Manifestazioni</strong>. Il pulsante “Apri ODG” apre l’Ordine del Giorno online della data selezionata.
+      </div>
+      <div class="results-head">
+        <div>
+          <div class="results-kicker">Agenda stagione</div>
+          <div class="results-count" id="resultsCount" aria-live="polite"></div>
+        </div>
+        <div class="results-actions">
+          <button class="small-action" id="goToday" type="button">Vai a oggi</button>
+        </div>
+      </div>
+      <div id="risultati"></div>
+      <button class="load-more" id="loadMore" type="button" hidden>Mostra altre giornate ↓</button>
+      <div class="no-results" id="noResults" hidden>
+        <div class="no-results-icon" aria-hidden="true">⌕</div>
+        <strong>Nessun risultato</strong><br>
+        Modifichi la ricerca oppure azzeri i filtri.
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="odg-dialog" id="odgDialog" role="dialog" aria-modal="true" aria-labelledby="odgDialogTitle" hidden>
+  <section class="odg-panel">
+    <header class="odg-head">
+      <div>
+        <div class="odg-kicker">Ordine del giorno</div>
+        <h2 class="odg-title" id="odgDialogTitle"></h2>
+      </div>
+      <button class="odg-close" id="odgClose" type="button" aria-label="Chiudi dettaglio ODG">✕</button>
+    </header>
+    <div class="odg-content" id="odgContent"></div>
+  </section>
+</div>
+<button class="back-top" id="backTop" type="button" aria-label="Torna all'inizio" hidden>↑</button>
+<div class="update-banner" id="updateBanner" role="status" aria-live="polite" hidden>
+  <div class="update-copy"><strong id="updateTitle">Aggiornamento disponibile</strong><span id="updateMessage">È disponibile una versione più recente del calendario.</span></div>
+  <div class="update-actions"><button class="update-later" id="updateLater" type="button">Dopo</button><button class="update-now" id="updateNow" type="button">Aggiorna</button></div>
+</div>
+<div class="version-badge" id="versionBadge">v1.0.0</div>
+
+
+<script>
+const D=[
+["2026-07-26","BLOCCO PALCOSCENICO","FERIE 7 · A/R di lun 27/7","Biennale Danza — Bangarra Dance Theatre h 21",""],
+["2026-07-27","BLOCCO PALCOSCENICO","RIPOSO","Biennale Danza",""],
+["2026-07-28","BLOCCO PALCOSCENICO","ORCHESTRA E CORO: FERIE · Maestri collaboratori Fen 01: FERIE · Servizi complessi artistici 3 pers: FERIE","Biennale Danza — 08:00–14:00 arrivo allestimento / MT · 14:00–20:00 fine MT / puntamento luci",""],
+["2026-07-29","BLOCCO PALCOSCENICO","FERIE 9","Biennale Danza",""],
+["2026-07-30","BLOCCO PALCOSCENICO","FERIE 10","Biennale Danza",""],
+["2026-07-31","BLOCCO PALCOSCENICO","FERIE 11","Biennale Danza",""],
+["2026-08-01","BLOCCO PALCOSCENICO","FERIE 12","Biennale Danza — Winndance Company h 21",""],
+["2026-08-02","BLOCCO PALCOSCENICO (18,45/19,30 visita)","FERIE 13 (19,30/20,15 concerto APO) · A/R di lun 3/8","Biennale Danza — Winndance Company h 21",""],
+["2026-08-03","BLOCCO PALCOSCENICO","RIPOSO","Biennale Danza",""],
+["2026-08-04","BLOCCO PALCOSCENICO","FERIE 14","",""],
+["2026-08-05","BLOCCO PALCOSCENICO","FERIE 15","",""],
+["2026-08-06","BLOCCO PALCOSCENICO","FERIE 16","Elisir — ingresso allestimento / montaggio",""],
+["2026-08-07","BLOCCO PALCOSCENICO","FERIE 17","Elisir — montaggio",""],
+["2026-08-08","BLOCCO PALCOSCENICO","FERIE 18","Elisir — montaggio",""],
+["2026-08-09","BLOCCO PALCOSCENICO","FERIE 19","Elisir — montaggio",""],
+["2026-08-10","BLOCCO PALCOSCENICO","RIPOSO","Elisir — riposo",""],
+["2026-08-11","BLOCCO PALCOSCENICO","LOG Elisir — Inc. Comp. / musicale / regia · FERIE 20","Elisir — montaggio",""],
+["2026-08-12","BLOCCO PALCOSCENICO","LOG Elisir — musicale / regia · FERIE 21","Elisir — montaggio",""],
+["2026-08-13","BLOCCO PALCOSCENICO","LOG Elisir — regia · FERIE 22","Elisir — TECNICA / puntamenti",""],
+["2026-08-14","BLOCCO PALCOSCENICO","FERIE 23","Elisir — regia",""],
+["2026-08-15","FESTIVO","FESTIVO","FESTIVO",""],
+["2026-08-16","BLOCCO PALCOSCENICO","FERIE 24","Elisir — regia",""],
+["2026-08-17","BLOCCO PALCOSCENICO","RIPOSO","Elisir — riposo",""],
+["2026-08-18","BLOCCO PALCOSCENICO","FERIE 25 · *rientro CORO da ferie (24 gg.)","Elisir — regia",""],
+["2026-08-19","BLOCCO PALCOSCENICO","FERIE 26","Elisir — regia / luci",""],
+["2026-08-20","BLOCCO PALCOSCENICO","FERIE 27","Elisir — regia + coro / luci",""],
+["2026-08-21","BLOCCO PALCO","ESP Elisir — letture · APO Fest · *rientro ORCH. da ferie (28 gg.)","Elisir — ANTEPIANO",""],
+["2026-08-22","BLOCCO PALCOSCENICO","","Elisir — assieme x 2 / luci",""],
+["2026-08-23","BLOCCO PALCOSCENICO","","Elisir — Assieme 1",""],
+["2026-08-24","BLOCCO PALCOSCENICO","","Elisir — riposo",""],
+["2026-08-25","BLOCCO PALCOSCENICO","","Elisir — luci / assieme h 18/22",""],
+["2026-08-26","BLOCCO PALCOSCENICO","","Elisir — 1^ recita h 19 (Diretta Radio3)",""],
+["2026-08-27","BLOCCO PALCOSCENICO","ESP Orchestra Fenice — prove con finalisti concorso violino V. Veneto","",""],
+["2026-08-28","BLOCCO PALCOSCENICO","","Elisir — 2^ recita h 19",""],
+["2026-08-29","BLOCCO PALCOSCENICO","","","Trasferta Orchestra / Concorso violino Vittorio Veneto h 17"],
+["2026-08-30","BLOCCO PALCOSCENICO","","Elisir — 3^ recita h 17",""],
+["2026-08-31","BLOCCO PALCOSCENICO","","","Evento Mastercard Misericordia (coro) — prove pom. + sera"],
+["2026-09-01","BLOCCO PALCOSCENICO","LOG Pagliacci — Inc. Comp. / musicale / regia","Elisir — 4^ recita h 19 + smontaggio","Evento Mastercard Misericordia (coro) h 22,45"],
+["2026-09-02","BLOCCO PALCOSCENICO","LOG Pagliacci — musicale / regia · ESP letture x concerto TV","Elisir — smontaggio","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-03","BLOCCO PALCOSCENICO · mt Cartier tecnici in 17/23","LOG Pagliacci — musicale / regia · APO Cena Fest e+f · ESP letture conc. TV","Elisir — smt / uscita · Pagliacci — arrivo / mnt","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-04","BLOCCO PALCOSCENICO · prove Cartier tecnici in 17/23","LOG Pagliacci — regia · ESP letture orch. Cartier","Pagliacci — montaggio","Evento Mastercard Misericordia (coro) h 22,30 · Concerto Teatro Del Monaco Treviso ore 20 (orchestra) + letture 16,30*"],
+["2026-09-05","BLOCCO PALCOSCENICO · proiez. LaLaLand/Cartier h 20 + smt","LOG Pagliacci — regia · APO Cartier","Pagliacci — montaggio","Evento Mastercard Misericordia (coro) h 22,30 · *dir. Elisabetta Maschio"],
+["2026-09-06","BLOCCO PALCOSCENICO · visita ed esibizione h 19","LOG Pagliacci — regia","Pagliacci — montaggio","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-07","BLOCCO PALCOSCENICO","LOG Pagliacci — riposo · ROS concertazione / musicale coro","Pagliacci — riposo","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-08","BLOCCO PALCOSCENICO","ROS conc. coro","Pagliacci — TECNICA / regia","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-09","FEST — Proiezione + cocktail dalle 18 (1e+1f)","ROS conc. coro","Pagliacci — regia + coro","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-10","BLOCCO PALCOSCENICO · visita h 18,30","ESP Pagliacci — letture · APO Cena (29/26) 80 p","Pagliacci — regia + coro / preset luci","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-11","BLOCCO PALCOSCENICO","ESP Pagliacci — letture","Pagliacci — regia + coro / luci","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-12","BLOCCO PALCOSCENICO","","Pagliacci — ITA + ANTEPIANO","Evento Mastercard Misericordia (coro) h 22,30"],
+["2026-09-13","BLOCCO PALCOSCENICO","","Pagliacci — Assieme 1",""],
+["2026-09-14","BLOCCO PALCOSCENICO","APO ZEN Trio Antidote / Redi Hasa (solo e) · ESP eliminatorie 1° flauto","",""],
+["2026-09-15","BLOCCO PALCOSCENICO","APO Amici Fenice — Pagliacci","Pagliacci — Assieme x 2 / luci",""],
+["2026-09-16","BLOCCO PALCOSCENICO · dalle 16 visita","APO Scalzotto Circolo h 16 (MK) · SIN ape (10 p) fino 17,15","Pagliacci — luci / GENERALE",""],
+["2026-09-17","BLOCCO PALCOSCENICO","LOG Dittico — Inc. Comp. / mus. / regia · APO Archivio Fano h 20","Pagliacci — luci",""],
+["2026-09-18","BLOCCO PALCOSCENICO","LOG Dittico — musicale / regia · Ballo Debuttanti prep./prove","Pagliacci — 1^ recita h 19 (in abb.) (Diff. Radio3)",""],
+["2026-09-19","BLOCCO PALCOSCENICO · Ballo Debuttanti (NO poltrone platea)","LOG Dittico — musicale / regia + APO a disposizione ballo · letture 15/18 + 19,30/22,30 Callegari","",""],
+["2026-09-20","BLOCCO PALCOSCENICO","LOG Dittico — regia","Pagliacci — 2^ recita h 17",""],
+["2026-09-21","BLOCCO PALCOSCENICO","APO Musikamera Giovani Talenti — Quartetto Rilke h 20 · FINALE CONCORSI ORCHESTRA 1° flauto","","Goldoni — Dittico riposo"],
+["2026-09-22","BLOCCO PALCOSCENICO","LOG Dittico — regia","Pagliacci — 3^ recita h 19","Goldoni — Dittico arrivo allestimento + montaggio h 14"],
+["2026-09-23","BLOCCO PALCOSCENICO · visita Bassani h 18,30","LOG Dittico — regia · APO Musikamera h 20 · letture 15/18 + 19,30/22,30 Callegari","","Goldoni — Dittico montaggio"],
+["2026-09-24","BLOCCO PALCOSCENICO · prep wedding","LOG Dittico — regia · APO Musikamera h 20","Pagliacci — 4^ recita h 19","Goldoni — Dittico montaggio"],
+["2026-09-25","BLOCCO PALCOSCENICO · prep WED · 2 h prova + CONCERTO Callegari h 20 (su buca)","LOG Dittico — max fino ore 16 + APO disp. Wedding","","Goldoni — Dittico montaggio"],
+["2026-09-26","BLOCCO PALCOSCENICO · Wedding USA + DJ set / no sedie platea","APO disp. Wedding","Pagliacci — 5^ recita h 17 + smontaggio","Goldoni — Dittico TECNICA / regia"],
+["2026-09-27","BLOCCO PALCOSCENICO · no sedie platea · CONCERTO Callegari h 17 (su buca)","","","Goldoni — Dittico regia"],
+["2026-09-28","BLOCCO PALCOSCENICO · no sedie platea","APO ZEN (solo e) · ESP eliminatorie concorso orch. 1° clarino","","Goldoni — Dittico riposo"],
+["2026-09-29","BLOCCO PALCOSCENICO · visita h 15/17 (45 p)","ESP Concerto — letture 6 h 10,30/13,30 + 15/18","Pagliacci — smontaggio / partenza allestimento","Goldoni — Dittico regia"],
+["2026-09-30","BLOCCO PALCOSCENICO","ESP Concerto — letture 6 h 10,30/13,30 + 15/18","Montaggio concerto M° Thomson","Goldoni — Dittico regia / preset luci"],
+["2026-10-01","BLOCCO PALCOSCENICO · visita h 17/18,30 · 2 h prove + CONCERTO M° N. Thomson h 20 (su buca) Dir. R3","SIN ape","","Goldoni — Dittico LUCI / regia"],
+["2026-10-02","BLOCCO PALCOSCENICO · CONCERTO M° N. Thomson h 20 (su buca)","Veneto Jazz h 19","","Goldoni — Dittico LUCI / ANTEPIANO"],
+["2026-10-03","BLOCCO PALCOSCENICO","ESP letture Mestre 10,30 · Dittico — letture / ITA · APO workshop 10/13 (no nec.) · Veneto Jazz h 19","","Goldoni — Dittico luci"],
+["2026-10-04","GIORNATA FESTIVA · FESTIVAL DELLE IDEE — Fiorella Mannoia","APO Premio Venezia · G. FESTIVA","G. FESTIVA","Goldoni — G. FESTIVA · Mestre Toniolo — M° Elisabetta Maschio"],
+["2026-10-05","BLOCCO PALCOSCENICO","APO Premio Venezia · ESP tournée — Inc. Comp. / mus. · FINALE CONCORSI ORCHESTRA 1° clarino","","Goldoni — Dittico riposo"],
+["2026-10-06","BLOCCO PALCOSCENICO · visita Fest h 18,45/19,50 (no APO)","APO Premio Venezia · ESP tournée — regia · APO Amici Fenice — Dittico h 18","","Goldoni — Dittico assieme x 2 M° Brusa"],
+["2026-10-07","BLOCCO PALCOSCENICO","APO Premio Venezia · ESP tournée — regia","","Goldoni — Dittico luci / generale M° Brusa"],
+["2026-10-08","BLOCCO PALCOSCENICO","APO Premio Venezia · ESP tournée — regia","","Goldoni — Dittico luci"],
+["2026-10-09","BLOCCO PALCOSCENICO · Aldo Cazzullo / Festival delle Idee h 18,30","APO Premio Venezia · ROS mus. coro · ESP regia (tournée)","","Goldoni — Dittico M° Brusa — recita 1^ h 19"],
+["2026-10-10","BLOCCO PALCOSCENICO · PREMIO VENEZIA — semifinale h 15","LOG tournée — regia · APO P.VE · ESP letture 6 h · opz. Evento Cons. VE 150°","","Goldoni — Dittico M° Brusa — recita 2^ h 19"],
+["2026-10-11","BLOCCO PALCOSCENICO · PREMIO VENEZIA — Finale & Premiazione h 17","APO P.Ve · ESP ita 10/13","","Goldoni — Dittico M° Brusa — recita 3^ h 15,30"],
+["2026-10-12","BLOCCO PALCOSCENICO · visita Bassani h 19","LOG tournée — partenza strumenti · COMPAGNIA RIPOSO","","Goldoni — Dittico M° Brusa — riposo"],
+["2026-10-13","BLOCCO PALCOSCENICO","LOG tournée — regia · APO Amici Fenice — balletti h 18","premontaggio","Goldoni — Dittico M° Brusa — recita 4^ h 19"],
+["2026-10-14","BLOCCO PALCOSCENICO","LOG tournée — regia","arrivo materiale / mt / luci","Goldoni — Dittico M° Brusa — recita 5^ h 19 + smontaggio"],
+["2026-10-15","BLOCCO PALCOSCENICO","LOG tournée — regia (mattino) · APO EX NOVO ENSEMBLE","Hamburg Kammerballet — luci / classe / prove","Goldoni — Dittico smt / uscita allestimento · Shanghai — partenza tecnici"],
+["2026-10-16","BLOCCO PALCOSCENICO","APO Festival Idee — Gloria Campaner","Hamburg Kammerballet — 1° h 19","Shanghai — arrivo tecnici"],
+["2026-10-17","BLOCCO PALCOSCENICO","APO Veneto Jazz h 19 e h 21","Hamburg Kammerballet — 2° h 17 + smt (solo uscita mat.)","Shanghai — scarico e inizio mt · partenza coro"],
+["2026-10-18","BLOCCO PALCOSCENICO","APO Festival Idee","smontaggio / prep per Balletto Dear Son","Shanghai — MT · partenza orchestra"],
+["2026-10-19","BLOCCO PALCOSCENICO · corsi SFTW","APO ZEN (solo e)","","Shanghai — MT / prova coro bimbi in sala regia + regia coro e coro bimbi"],
+["2026-10-20","BLOCCO PALCOSCENICO · corsi SFTW 17/23 · mt Intesa 21/10","APO Musikamera Giovani Talenti — Trio Hermes h 20","","Shanghai — luci / assieme"],
+["2026-10-21","BLOCCO PALCO · corsi SFTW · Op. Intesa (concerto + retropalco)","ESP Fedora — Inc. Comp. / mus. · LOG ballo + APO (fine tutto ore 22,30)","Dear Son — mt / luci","Shanghai — luci e generale"],
+["2026-10-22","BLOCCO PALCOSCENICO · corsi SFTW · Fedora — scarico h 8-14","ESP Fedora — MUSICALI · APO + foyer Cena 100 p (2/26)","Dear Son — luci e prove","Shanghai — luci e 1^ RECITA h 19,30"],
+["2026-10-23","BLOCCO PALCOSCENICO · corsi SFTW · Fedora — scarico h 8-14","ESP Fedora — mus. / regia · APO Musikamera h 20","Dear Son — 1° h 19","Shanghai — day off"],
+["2026-10-24","Fedora — montaggio","ESP Fedora — regia · APO Musikamera h 20","Dear Son — 2° h 17","Shanghai — 2^ RECITA h 14 (personale dalle 13) + SMT"],
+["2026-10-25","Fedora — montaggio","ESP Fedora — regia · APO Joy Singer h 18 (M. Foffano)","smontaggio","Shanghai — partenza TUTTI (tranne tecnici, in A/R di lun 26)"],
+["2026-10-26","ipotesi lavori elettrici","","","Shanghai — partenza tecnici"],
+["2026-10-27","Fedora — montaggio","ESP Fedora — regia","mt camera acustica (solo muro?)",""],
+["2026-10-28","Fedora — montaggio","ESP Fedora — regia · APO EX NOVO ENSEMBLE","mt camera acustica (solo muro?) / prove",""],
+["2026-10-29","Fedora — montaggio · visita h 18,45","ESP Fedora — regia (max fino h 20) · FOYER ape 19,15 + Cena APO","Carmina Burana — prove assieme Coro + 2 pf. e percussioni",""],
+["2026-10-30","Fedora — TECNICA / regia","APO Festival due Città ore 20","Carmina Burana — assieme 2 h / Concerto h 20","Fondazione Ghirardi — concerto solisti Fenice h 20,45"],
+["2026-10-31","Fedora — regia / puntamenti","APO Veneto Jazz h 19 e h 21","Carmina Burana — concerto h 20",""],
+["2026-11-01","FESTIVO","FESTIVO","FESTIVO","FESTIVO"],
+["2026-11-02","Fedora — riposo","ESP eliminatorie orch. 1° violino · APO ZEN (solo e)","",""],
+["2026-11-03","Fedora — regia + coro / luci","APO Musikamera giovani 10 e 12 + APO Musikamera · ESP letture Fedora","Hans Zimmer Tribute — Veneto Jazz h 21,30",""],
+["2026-11-04","Fedora — regia + coro / luci","APO Musikamera · ESP letture Fedora","",""],
+["2026-11-05","Fedora — regia + coro / luci","ESP letture Fedora? · APO Venice Sustainable Fashion Forum (e+f 18/24)","opz. concerti Fest",""],
+["2026-11-06","Fedora — luci / antepiano · visita da verificare con orari antepiano","ESP letture Fedora? · APO cocktail Danieli (e+f 18/24)?","",""],
+["2026-11-07","Fedora — ita / assieme + luci","APO Levante e+f","DIEGO BASSO / MORRICONE",""],
+["2026-11-08","Fedora — assieme x 1","APO Concerto Scuola Italiana Archi (solo e) ore 18 (invece di 3/1?)","FEST",""],
+["2026-11-09","Fedora — luci","APO Amici Fenice — Fedora · FINALE CONCORSI ORCHESTRA 1° violino","",""],
+["2026-11-10","Fedora — assiemi x 2 / luci","APO e+f Commemorazione Sinopoli","",""],
+["2026-11-11","Fedora — luci + GENERALE 1^ compagnia (CHIUSA)","","Concerto Fest — F. Michielin",""],
+["2026-11-12","Fedora — luci + GENERALE 2^ (aperta?)","APO Incontro scuole 10 e 12 · APO EX NOVO ENSEMBLE · 1 squadra in 17-23","MUSIKAMERA — Joshua Bell h 20",""],
+["2026-11-13","Fedora — luci / recita 1^ h 19","LOG per FREUNDESKREIS h 17","",""],
+["2026-11-14","Fedora — recita 2^ h 15,30","APO Venice Noir (Vidal/MK) mattino · LOG FREUND h 10 · APO Cena 25/26","",""],
+["2026-11-15","Fedora — recita 3^ h 15,30","APO Venice Noir (Vidal/MK) mattino?","Concerto MARIO BIONDI",""],
+["2026-11-16","","APO Veneto Jazz h 19","",""],
+["2026-11-17","Fedora — recita 4^ h 19","","",""],
+["2026-11-18","Fedora — recita 5^ h 19","","opzione banda GDF",""],
+["2026-11-19","Fedora — recita 6^ h 19","APO Musikamera giovani h 10 e 12","",""],
+["2026-11-20","Fedora — recita 7^ h 19","LOG FREUNDESKREIS concerto pf (da conf., mattino)","opzione banda GDF",""],
+["2026-11-21","MADONNA DELLA SALUTE / festivo · nota: Concerto inaugurale M° Frizza (in palco), buca in vendita — sab 28/11 h 20","MADONNA DELLA SALUTE / festivo","MADONNA DELLA SALUTE / festivo","MADONNA DELLA SALUTE / festivo"],
+["2026-11-22","Fedora — recita 8^ h 15,30 + smt?","APO h 11 Concerto Ass. Wagner Venezia (1 cab)","",""],
+["2026-11-23","","APO Incontro docenti Piccolo Orso h 16 e+f","manutenzione macchina scenica",""],
+["2026-11-24","smontaggio / uscita","ESP letture Concerto Inaugurale · APO opz. Billio concerto serale","manutenzione macchina scenica",""],
+["2026-11-25","smontaggio / uscita e mt Concerto Inaugurale","APO mattino Billio + h 18 conf. · ROS mus. · Danza Bolletta · ESP letture Conc. Inaugurale","manutenzione macchina scenica",""],
+["2026-11-26","Concerto Inaugurale — assieme 15,30/19,30 orch/coro/soli (8/14 mt sedie buca)","APO Musikamera giovani 10 e 12","manutenzione macchina scenica",""],
+["2026-11-27","Concerto Inaugurale — assiemi 10,30/13,30 + 15/18","","manutenzione macchina scenica",""],
+["2026-11-28","assestamento + CONCERTO INAUGURALE h 20 M° Frizza (dentro, no su buca)","","",""],
+["2026-11-29","CONCERTO INAUGURALE h 17 M° Frizza (dentro, no su buca)","","",""],
+["2026-11-30","ipotesi lavori elettrici","APO Incontro docenti Piccolo Orso h 16 e+f","manutenzione macchina scenica",""],
+["2026-12-01","Concerto — smontaggio / adeguamento · letture ore 15,30/19,30","APO opzione Agimus h 20","manutenzione macchina scenica","Attenzione! Macbeth a Oper Köln"],
+["2026-12-02","Concerto — letture 10,30/13,30 + 15/18","APO Premio Tomorrow's Jazz (9/16) + Veneto Jazz h 19","manutenzione macchina scenica",""],
+["2026-12-03","Concerto — letture 10,30/13,30 + 15/18","APO EX NOVO ENSEMBLE","manutenzione macchina scenica",""],
+["2026-12-04","assestamento + CONCERTO h 20 M° Ioffe (dentro, no su buca)","APO edu Babbo — arrivo in ammannati","opz. concerti Fest",""],
+["2026-12-05","CONCERTO h 20 M° Ioffe (dentro, no su buca)","APO edu Babbo — mt m+at","",""],
+["2026-12-06","CONCERTO h 17 M° Ioffe + smontaggio","APO edu Babbo — mt / prove e+f","CASA FAMIGLIA h 18?",""],
+["2026-12-07","ipotesi lavori elettrici","ESP eliminatorie orch. 1^ tromba (APO occupate da Babbo)","manutenzione macchina scenica",""],
+["2026-12-08","FESTIVO","FESTIVO","manutenzione macchina scenica",""],
+["2026-12-09","Galà DANZA — montaggio (8/14 smt sedie buca)","APO edu Babbo 10 e 12 (scuole) · ESP letture Gala Danza","manutenzione macchina scenica",""],
+["2026-12-10","Galà DANZA — montaggio + assieme con orchestra (se no assieme: letture ESP)","APO edu Babbo 10 e 12 (scuole) · ESP letture Gala","manutenzione macchina scenica",""],
+["2026-12-11","Galà DANZA — assiemi","APO edu Babbo 10 e 12 (scuole)","manutenzione macchina scenica",""],
+["2026-12-12","Galà DANZA — h 19 + assieme","APO edu Babbo 10 e 12 (fam) · se cocktail post recita: ok AMM/SIN","","ev. Cori Mestre?"],
+["2026-12-13","Galà DANZA — h 15,30 + smontaggio","APO edu Babbo 10 e 12 (fam)","","ev. Cori Mestre?"],
+["2026-12-14","ipotesi lavori elettrici","APO edu Babbo — smt · FINALE CONCORSI ORCH 1^ tromba (NO MANUT!!)","",""],
+["2026-12-15","Danza — smontaggio / uscita allestimento + cambio per concerto","APO Coop. IL CERCHIO h 20 · ESP letture Concerto Kochanovski","manutenzione macchina scenica","Concerto Basilica M° Gemmani h 20"],
+["2026-12-16","Concerto — montaggio + letture h 16 (8/14 mt sedie buca)","opz. Zen?","manutenzione macchina scenica","Concerto Basilica M° Gemmani h 20"],
+["2026-12-17","2 ore prova + CONCERTO solo orchestra h 20 M° Kochanovski (dentro, no su buca)","","opz. Fest (concerto sinfonico su buca)",""],
+["2026-12-18","CONCERTO solo orchestra h 20 M° Kochanovski + smt (dentro, no su buca)","","opz. Zen???",""],
+["2026-12-19","opzione Ospitalità RIVA · FERRETTI (dentro, no su buca)","EV FERIE ORCHESTRA / CORO","opz. Zen???",""],
+["2026-12-20","Concerto Capodanno — montaggio","EV FERIE ORCHESTRA / CORO · APO Veneto Jazz","opz. Zen???",""],
+["2026-12-21","ipotesi lavori elettrici","","",""],
+["2026-12-22","Concerto Capodanno — montaggio","EV FERIE ORCHESTRA / CORO","manutenzione macchina scenica",""],
+["2026-12-23","Concerto Capodanno — montaggio","EV FERIE ORCHESTRA / CORO","manutenzione macchina scenica",""],
+["2026-12-24","Concerto Capodanno — montaggio","EV FERIE ORCHESTRA / CORO","",""],
+["2026-12-25","FESTIVO","FESTIVO","FESTIVO",""],
+["2026-12-26","FESTIVO · orchestra + coro A/R di lun 28/12","FESTIVO","FESTIVO",""],
+["2026-12-27","Concerto Capodanno — letture 10,30/13,30 + 15/18","ESP musicali solisti (14,30) / mus. coro (19) Capodanno","",""],
+["2026-12-28","Concerto Capodanno — assiemi 10,30/13,30 + 15/18","","manutenzione macchina scenica","Macbeth Opera Colonia — allestimento feb."],
+["2026-12-29","CONCERTO CAPODANNO h 20 M° Noseda · Assieme aperto h 11-13","SIN cocktail pre concerto (Corriere DS)","manutenzione macchina scenica","Macbeth Colonia — recite dal 2/5 al 18/7"],
+["2026-12-30","CONCERTO CAPODANNO h 17 M° Noseda","","manutenzione macchina scenica",""],
+["2026-12-31","CONCERTO CAPODANNO h 16 M° Noseda","","manutenzione macchina scenica",""],
+["2027-01-01","CONCERTO CAPODANNO h 11,15 M° Noseda","","",""],
+["2027-01-02","smontaggio Capodanno / no smt sedie · USCITA RAI MATTINO","","",""],
+["2027-01-03","smontaggio Concerto Capodanno","APO Concerto Scuola Italiana Archi (solo e) ore 18 (o 8/11??)","",""],
+["2027-01-04","","","manutenzione macchina scenica",""],
+["2027-01-05","Gala Danza — montaggio","","manutenzione macchina scenica",""],
+["2027-01-06","GIORNATA FESTIVA","GIORNATA FESTIVA","GIORNATA FESTIVA",""],
+["2027-01-07","Gala Danza — prove (NO ORCH, musica registrata)","","",""],
+["2027-01-08","GALA DANZA (dentro! sedie buca a disposizione vendita) + smt","arrivo tecnici Béjart · ESP letture Béjart 15,30/19,30","",""],
+["2027-01-09","Béjart — arrivo / scarico 8/14 e montaggio 14/20","ESP letture Béjart 10,30/13,30 + 15/18","CONCERTO CORO h 20",""],
+["2027-01-10","Béjart — montaggio 8/14 (anche smt sedie buca)","ESP letture Béjart 10,30/13,30","CONCERTO CORO h 17",""],
+["2027-01-11","Béjart — riposo","LOG ballo","",""],
+["2027-01-12","Béjart — luci · classe / assieme","ESP Butterfly — Inc. Comp. / mus. · APO Amici Fenice / Bolletta","Piccolo Orso — ingresso / MT",""],
+["2027-01-13","Béjart — 15,30/17,30 + 1° BALLETTO h 19 (no barcacce in vendita!)","ESP Butterfly — regie · LOG per ballo","Piccolo Orso — MT",""],
+["2027-01-14","Béjart — 2° BALLETTO h 19 (no barcacce in vendita!)","ESP Butterfly — regie · LOG per ballo","Piccolo Orso — MT / TECNICA (se nec.)",""],
+["2027-01-15","Béjart — 3° BALLETTO h 19 (no barcacce in vendita!)","ESP Butterfly — regie · LOG per ballo","Piccolo Orso — prove",""],
+["2027-01-16","Béjart — 4° BALLETTO h 15,30 (no barcacce in vendita!)","ESP Butterfly — regie · LOG per ballo","Piccolo Orso — prove",""],
+["2027-01-17","Béjart — 5° BALLETTO h 15,30 + smt (no barcacce in vendita!)","ESP Butterfly — regie · LOG per ballo","Piccolo Orso — prove",""],
+["2027-01-18","uscita Béjart? · Butterfly — arrivo allestimento","","",""],
+["2027-01-19","Butterfly — montaggio","ESP Butterfly — regie + coro (1,45 h x 2)","Piccolo Orso — prove","Orchestra / Concerti scuole? (prove anche AMM o sala piccola)"],
+["2027-01-20","Butterfly — montaggio","ESP Butterfly — regie","Piccolo Orso + orchestra Aslico ore 10 e 12 (1^ e 2^ recita)","Orchestra / Concerti scuole?"],
+["2027-01-21","Butterfly — TECNICA / regia + coro 15/18 / luci","APO MUSIKAMERA 1","Piccolo Orso + orchestra Aslico ore 10 e 12 (3^ e 4^ recita)","Orchestra / Concerti scuole?"],
+["2027-01-22","Butterfly — regia + coro 10/13 / regia / luci","APO MUSIKAMERA 1","Piccolo Orso + orchestra Aslico ore 10 e 12 (5^ e 6^ recita)","Orchestra / Concerti scuole?"],
+["2027-01-23","Butterfly — regia x 2 / luci","APO VENETO JAZZ","Piccolo Orso — 15,30 (7^ recita)",""],
+["2027-01-24","Butterfly — regia + coro?","Giornata della Memoria — mattino Education + orch?","",""],
+["2027-01-25","","","",""],
+["2027-01-26","Butterfly — luci / antepiano","ESP letture 6 h · ROS Hansel e Gretel — Inc. Comp. / MUSICALE","Hansel e Gretel — ingresso / mt",""],
+["2027-01-27","Butterfly — assieme x 2 / luci","ROS Hansel e Gretel — musicale · APO Amici Fenice — Butterfly","Hansel e Gretel — mt",""],
+["2027-01-28","Butterfly — assieme x 2 / luci","LOG Hansel e Gretel — regia","Hansel e Gretel — mt",""],
+["2027-01-29","Butterfly — generale","APO Incontro scuole 10 e 12","Hansel e Gretel — MT / tecnica e regia",""],
+["2027-01-30","BUTTERFLY — 1^ RECITA h 19 M° Callegari","","Hansel e Gretel — regie",""],
+["2027-01-31","BUTTERFLY — 2^ RECITA h 15,30 M° Callegari","","Hansel e Gretel — regie",""],
+["2027-02-01","","APO MUSIKAMERA o ARCH. FANO 2","",""],
+["2027-02-02","BUTTERFLY — 3^ RECITA h 19 M° Callegari","LOG Incontro docenti 16/18 Barbiere Kids (no nec.)","Hansel e Gretel — regie",""],
+["2027-02-03","BUTTERFLY — 4^ RECITA h 19 M° Callegari","","Hansel e Gretel — regie",""],
+["2027-02-04","BUTTERFLY — 5^ RECITA h 19 M° Callegari","APO Musikamera giovani h 10 e 12","Hansel e Gretel — regia",""],
+["2027-02-05","BUTTERFLY — 6^ RECITA h 19 M° Callegari","","Hansel e Gretel — regie",""],
+["2027-02-06","BUTTERFLY — 7^ RECITA h 15,30 M° Callegari","","Hansel e Gretel — regie / preset luci",""],
+["2027-02-07","BUTTERFLY — 8^ RECITA h 17 M° Callegari","APO cocktail post recita (e+f)","Hansel e Gretel — regie",""],
+["2027-02-08","","APO MUSIKAMERA o ARCH. FANO 1","",""],
+["2027-02-09","BUTTERFLY — 9^ RECITA h 19 + smt? · martedì grasso","LOG Jenufa — Incontro compagnia / musicale","Hansel e Gretel — regie",""],
+["2027-02-10","smontaggio / uscita","LOG Jenufa — musicale / musicale con coro","Hansel e Gretel — regie",""],
+["2027-02-11","smontaggio / uscita","LOG Jenufa — regie (no DIR) · ESP letture Hansel 3+3 h","Hansel e Gretel — regie / luci",""],
+["2027-02-12","mt per concerto Orchestre des Champs-Élysées","LOG Jenufa — regie (no DIR) · ESP letture Hansel 4 h","Hansel e Gretel — luci / antepiano",""],
+["2027-02-13","adeguamento per Concerto Orch. Champs-Élysées M° Herreweghe (su buca)","LOG Jenufa — regie (no DIR)","Hansel e Gretel — ita 11/14 + assieme 15,30/18,30",""],
+["2027-02-14","CONCERTO Orchestre des Champs-Élysées M° Herreweghe (su buca) h 19","LOG Jenufa — regia (no DIR) · APO Cena S. Valentino (e+f)","Hansel e Gretel — assieme",""],
+["2027-02-15","Jenufa — ingresso allestimento (verificare se ingresso prima)","APO Amici Fenice — Hansel e Gretel","",""],
+["2027-02-16","Jenufa — montaggio","LOG Jenufa — regie (no DIR)","Hansel e Gretel — assieme x 2",""],
+["2027-02-17","Jenufa — montaggio","APO Incontro scuole 10 e 12 · LOG Jenufa — regia dalle 14 (no DIR)","Hansel e Gretel — luci / generale",""],
+["2027-02-18","Jenufa — montaggio","LOG Jenufa — regie (no DIR) · APO MUSIKAMERA 2","Hansel e Gretel — luci",""],
+["2027-02-19","Jenufa — tecnica / regia (no DIR)","APO MUSIKAMERA 2","Hansel e Gretel — 1^ recita h 19 M° Xuzhong",""],
+["2027-02-20","Jenufa — regia x 2 (no DIR)","","",""],
+["2027-02-21","Jenufa — preset (no DIR) · cast RIPOSO","","Hansel e Gretel — 2^ recita h 15,30 M° Xuzhong",""],
+["2027-02-22","","ROS Jenufa — musicale","",""],
+["2027-02-23","Jenufa — regia x 2","LOG Incontro docenti 16/18 Barbiere Kids (no nec.)","Hansel e Gretel — 3^ recita h 19 M° Xuzhong",""],
+["2027-02-24","Jenufa — regia x 2","APO MUSIKAMERA 3","",""],
+["2027-02-25","Jenufa — regia x 2 / luci","APO MUSIKAMERA 3","Hansel e Gretel — 4^ recita h 19 M° Xuzhong",""],
+["2027-02-26","Jenufa — regia x 2 / luci","APO Zen 1 cab","",""],
+["2027-02-27","Jenufa — regia x 2 / luci","APO VENETO JAZZ","Hansel e Gretel — 5^ recita h 15,30 M° Xuzhong",""],
+["2027-02-28","Jenufa — regia","","",""],
+["2027-03-01","","MUSIKAMERA · APO Amici Fenice — Parsons","",""],
+["2027-03-02","Jenufa — regia x 2 / luci","ESP letture Jenufa 10,30/13,30 + 15/18 · LOG Incontro docenti 16/18 Arca di Noè (no nec.)","",""],
+["2027-03-03","Jenufa — regia x 2 / luci","ESP letture Jenufa 10,30/13,30 + 15/18 · APO Bolletta","Parsons Dance Company — scarico e montaggio",""],
+["2027-03-04","Jenufa — luci / italiana 15,30/19","APO Musikamera giovani h 10 e 12 · APO Amici Fenice — Jenufa","Parsons Dance Company — 1^ recita h 19",""],
+["2027-03-05","Jenufa — luci / antepiano","APO MUSIKAMERA o ARCH. FANO 4","Parsons Dance Company — 2^ recita h 19",""],
+["2027-03-06","Jenufa — assieme x 2 / luci","APO teacher ambassador h 14,30 e+f","Parsons Dance Company — 3^ recita h 17 + smontaggio e carico",""],
+["2027-03-07","Jenufa — assieme","","",""],
+["2027-03-08","","","",""],
+["2027-03-09","Jenufa — assieme x 2 / luci","APO Venezia Festival (Amici Fenice) solo cab","Arca di Noè — ingresso / montaggio",""],
+["2027-03-10","Jenufa — generale","APO Incontro scuole 10 e 12","Arca di Noè — montaggio",""],
+["2027-03-11","Jenufa — luci","APO Zen 1 cab","Arca di Noè — montaggio / tecnica",""],
+["2027-03-12","Jenufa — 1^ recita h 19 M° Yurkevjc","","Arca di Noè — prove",""],
+["2027-03-13","opz. Concerto Patriarcato (su buca)","ESP letture","Arca di Noè — prove",""],
+["2027-03-14","Jenufa — 2^ recita h 15,30 M° Yurkevjc","","Arca di Noè — prove",""],
+["2027-03-15","","APO Venezia Festival (Amici Fenice) solo cab","",""],
+["2027-03-16","Jenufa — 3^ recita h 19 M° Yurkevjc","","Arca di Noè — prove",""],
+["2027-03-17","","letture","Arca di Noè — 1^ recita h 11 (scuole)",""],
+["2027-03-18","Jenufa — 4^ recita h 19 M° Yurkevjc","","Arca di Noè — 2^ recita h 11 (scuole)",""],
+["2027-03-19","2 h prova + CONCERTO M° Yurkevjc h 20","","Arca di Noè — 3^ recita h 11 (scuole)",""],
+["2027-03-20","Jenufa — 5^ recita h 15,30 M° Yurkevjc + smt","","Arca di Noè — 4^ recita h 15,30 (fam)",""],
+["2027-03-21","CONCERTO M° Yurkevjc h 17","","Arca di Noè — smontaggio",""],
+["2027-03-22","","","",""],
+["2027-03-23","smontaggio / uscita allestimento","ESP letture?","Arca di Noè — uscita allestimento",""],
+["2027-03-24","adeguamento / letture · mt sedie buca 8/14","APO MUSIKAMERA 4","",""],
+["2027-03-25","assieme x 2","APO MUSIKAMERA 4","",""],
+["2027-03-26","CONCERTO ORCH + CORO h 20 M° Davies (dentro, buca in vendita)","","opz. Zen (sì)",""],
+["2027-03-27","CONCERTO ORCH + CORO h 17 M° Davies (dentro, buca in vendita)","","opz. Zen (da conf.)",""],
+["2027-03-28","PASQUA","PASQUA","PASQUA",""],
+["2027-03-29","LUNEDÌ DELL'ANGELO","LUNEDÌ DELL'ANGELO","LUNEDÌ DELL'ANGELO",""],
+["2027-03-30","adeguamento / letture","ESP Carmen — Inc. Comp. / MUS · LOG ballo","",""],
+["2027-03-31","assieme x 2","ESP Carmen — regie · LOG ballo","",""],
+["2027-04-01","prove 2 h? + CONCERTO ORCH + CORO h 20 M° Saraste (dentro, buca in vendita)","ESP Carmen — regie · LOG ballo","opz. Veneto Jazz",""],
+["2027-04-02","CONCERTO ORCH + CORO h 20 M° Saraste (dentro, buca in vendita)","ESP Carmen — regie · LOG ballo","opz. Veneto Jazz",""],
+["2027-04-03","CONCERTO ORCH + CORO h 17 M° Saraste (dentro, buca in vendita)","ESP Carmen — regie · LOG ballo","opz. Veneto Jazz",""],
+["2027-04-04","smt","ESP Carmen — regie · LOG ballo (no mattino) · APO conc. 24/26 h 10/12 100 p e+f 8/14","",""],
+["2027-04-05","","ESP Incontro docenti 16/18 (no nec.) · MUSIKAMERA","",""],
+["2027-04-06","CARMEN — arrivo allestimento / montaggio 8/20","ESP Carmen — regie · LOG ballo · APO Cena 200 p 23/26 (no pf, no pedana) e+f 18/24","letture 4 h",""],
+["2027-04-07","CARMEN — montaggio 8/20","ESP Carmen — regie · LOG ballo · APO MUSIKAMERA 5","letture",""],
+["2027-04-08","CARMEN — montaggio 8/20 / smt sedie buca 8/14","ESP Carmen — regie · LOG ballo · APO MUSIKAMERA 5","letture",""],
+["2027-04-09","CARMEN — montaggio / tecnica 8/20","ESP Carmen — regie · LOG ballo","CONCERTO M° Trevino h 20",""],
+["2027-04-10","Carmen — puntamenti luci / regia","APO VENETO JAZZ","CONCERTO M° Trevino h 20",""],
+["2027-04-11","Carmen — regia","APO MUSIKAMERA o ARCH. FANO 5","CONCERTO M° Trevino h 17",""],
+["2027-04-12","Carmen — RIPOSO","ESP Incontro docenti 16/18 (no nec.)","",""],
+["2027-04-13","Carmen — regia x 2 / luci","APO Musikamera giovani 10 e 12 · ESP Carmen — letture","",""],
+["2027-04-14","Carmen — regia x 2 / luci · VISITA 18,30/19","ESP Carmen — letture · APO Cena (300 p) rich. 26/26 e+f in 17/23","CRISTIAN RICCI — Orchestra Sinfonica del Veneto",""],
+["2027-04-15","Carmen — regia x 2 / luci","ESP Carmen — letture","",""],
+["2027-04-16","Carmen — ita / antepiano","LOG ballo · APO Zen 1 cab","OPZIONE FEST",""],
+["2027-04-17","Carmen — assieme x 2 / luci","LOG ballo (entro h 18) · APO VENETO JAZZ","",""],
+["2027-04-18","Carmen — assieme","LOG ballo · AMM Edu 0-3 (mattino, no nec.) · APO MUSIKAMERA 6 prove dalle 13","",""],
+["2027-04-19","","ESP Incontro docenti 16/18 (no nec.) · APO MUSIKAMERA 6","",""],
+["2027-04-20","Carmen — assieme x 2 / luci","LOG ballo fino h 18 · APO Amici Fenice — Carmen","OPZIONE VENETO JAZZ",""],
+["2027-04-21","CARMEN — generale","APO Incontro scuole 10 e 12 (se non 22/4) · LOG ballo (no mattino)","OPZIONE VENETO JAZZ",""],
+["2027-04-22","CARMEN — generale","APO Incontro scuole 10 e 12 (se non 21/4) · LOG ballo (no mattino)","",""],
+["2027-04-23","ritocchi / prove · CARMEN — 1^ recita h 19","","",""],
+["2027-04-24","CARMEN — 2^ recita h 19","","OPZIONE VENETO JAZZ",""],
+["2027-04-25","GIORNATA FESTIVA","GIORNATA FESTIVA","GIORNATA FESTIVA",""],
+["2027-04-26","recital con PF su buca","","",""],
+["2027-04-27","CARMEN — 3^ recita h 19","MUSIKAMERA","",""],
+["2027-04-28","CARMEN — 4^ recita h 19","","",""],
+["2027-04-29","CARMEN — 5^ recita h 19","","",""],
+["2027-04-30","CARMEN — 6^ recita h 19","","Barbiere Kids — arrivo allestimento",""],
+["2027-05-01","FESTIVO","FESTIVO","FESTIVO",""],
+["2027-05-02","CARMEN — 7^ recita h 15,30","opz. Zen???","Barbiere Kids — mt / prove (anche pomeriggio, no ass. con musicisti)",""],
+["2027-05-03","","","Barbiere Kids — riposo",""],
+["2027-05-04","CARMEN — 8^ recita h 19","","Barbiere Kids 10 e 12 (scuole) · mt concerto",""],
+["2027-05-05","CARMEN — smontaggio 12 h","","Barbiere Kids 10 e 12 (scuole) · letture 15/19",""],
+["2027-05-06","CARMEN — smontaggio + uscita","","Barbiere Kids 10 e 12 (scuole) · letture 6 h",""],
+["2027-05-07","Giselle — arrivo allestimento / scarico / premontaggio luci 8/20","","Barbiere Kids 10 e 12 (scuole) · 2 h prove + CONCERTO Orch. M° Tjeknavorian h 20",""],
+["2027-05-08","Giselle — montaggio tappeto / luci 8/20","LOG Barbiere — Inc. Comp. / MUS","Barbiere Kids 10 e 12 (fam) · CONCERTO Orch. M° Tjeknavorian h 17",""],
+["2027-05-09","Giselle — luci / tecnica 8/14","LOG Barbiere — regia · Orch. A/R di lun 10/5","Barbiere Kids 10 e 12 (fam) + smt (+att.)",""],
+["2027-05-10","Giselle — day off","ESP letture Giselle 10,30/13,30 + 15/18 · APO Amici Fenice — Giselle · LOG prova figuranti + costumi","Barbiere Kids — uscita",""],
+["2027-05-11","Giselle — 8/14 luci / prova + 14,30/17,30 letture orch. + 19/22 assieme (16,30/22,30)","ESP Barbiere — regie · LOG ballo","",""],
+["2027-05-12","Giselle — 8/14 luci e prova / 14/20 luci + 1° balletto h 19 (16,30/22,30)","ESP Barbiere — regie · LOG ballo","",""],
+["2027-05-13","Giselle — 8/14 + luci e prove · 2° balletto h 19 (16,30/22,30)","ESP Barbiere — regie · LOG ballo","",""],
+["2027-05-14","Giselle — 3° balletto h 19 (16,30/22,30)","ESP Barbiere — regie · LOG ballo","",""],
+["2027-05-15","Giselle — 4° balletto h 15,30 (14/20)","ESP Barbiere — regie · LOG ballo","OPZIONE FEST",""],
+["2027-05-16","Giselle — 5° balletto h 15,30 + smt totale (14/20)","ESP Barbiere — regie · LOG ballo · AMM Edu 0-3 (mattino, no nec.)","",""],
+["2027-05-17","Giselle — uscita allestimento","APO Bolletta","",""],
+["2027-05-18","Barbiere — arrivo allestimento / MT","ESP Barbiere — regie · APO MUSIKAMERA 7","prep per Concerto / letture 15/19",""],
+["2027-05-19","Barbiere — montaggio / tecnica","ESP Barbiere — regie · APO MUSIKAMERA 7","letture 15/19",""],
+["2027-05-20","Barbiere — regia x 2 / luci","ESP Barbiere — letture · APO Amici Fenice — Barbiere","letture 15/19",""],
+["2027-05-21","Barbiere — regia x 2 / luci","ESP Barbiere — letture / ITA · APO ape Fest 18,30/22 (1 e)","assestamento + CONCERTO ORCH h 20 M° Downey Dear",""],
+["2027-05-22","Barbiere — assieme x 2 / luci","APO VENETO JAZZ","CONCERTO ORCH h 17 M° Downey Dear",""],
+["2027-05-23","Barbiere — assieme","APO Zen 1 cab","adeguamento concerto / Nozze Istriane",""],
+["2027-05-24","","APO Cena Fest (200 p) 1 e","",""],
+["2027-05-25","Barbiere — 1^ recita h 19","ESP prove Toniolo","Nozze Istriane — ingresso / MONTAGGIO",""],
+["2027-05-26","Barbiere — 2^ recita h 19","ESP prove Toniolo","Nozze Istriane — MONTAGGIO",""],
+["2027-05-27","Barbiere — 3^ recita h 19","LOG Inc. Nozze Istriane / MUS (Nozze con ns. coro)","Nozze Istriane — MONTAGGIO","Concerto Toniolo"],
+["2027-05-28","Barbiere — 4^ recita h 19","Nozze Istriane — MUS","Nozze Istriane — MT / tecnica",""],
+["2027-05-29","Barbiere — 5^ recita h 19","","Nozze Istriane — regia x 2 / luci",""],
+["2027-05-30","Barbiere — 6^ recita h 17","","Nozze Istriane — regia",""],
+["2027-05-31","","APO MUSIKAMERA o ARCH. FANO 6","",""],
+["2027-06-01","Barbiere — 7^ recita h 19 + smt","","Nozze Istriane — regia x 2",""],
+["2027-06-02","GIORNATA FESTIVA","GIORNATA FESTIVA","GIORNATA FESTIVA",""],
+["2027-06-03","Barbiere — smontaggio / uscita allestimento","ESP letture 15,30/19,30 RIVA DEL GARDA","Nozze Istriane — regia x 2 / preset (+ coro da oggi)",""],
+["2027-06-04","BLOCCO PALCOSCENICO · Veneto Jazz — J. SAVORETTI","ESP letture 6 h RIVA DEL GARDA","Nozze Istriane — regia x 2 / luci",""],
+["2027-06-05","BLOCCO PALCOSCENICO","APO Zen 1 cab","Nozze Istriane — regia x 2 / luci","Orchestra — Concerto Riva del Garda"],
+["2027-06-06","BLOCCO PALCOSCENICO","APO MUSIKAMERA o ARCH. FANO 7","Nozze Istriane — regia","Orchestra — Concerto (sede da definire)"],
+["2027-06-07","BLOCCO PALCOSCENICO","","",""],
+["2027-06-08","BLOCCO PALCOSCENICO","APO MUSIKAMERA 8","Nozze Istriane — regia",""],
+["2027-06-09","BLOCCO PALCOSCENICO","APO MUSIKAMERA 8","Nozze Istriane — regia x 2 / luci",""],
+["2027-06-10","BLOCCO PALCOSCENICO","APO Amici Fenice — Nozze Istriane","Nozze Istriane — regia / letture h 16",""],
+["2027-06-11","BLOCCO PALCOSCENICO","","Nozze Istriane — letture / antepiano in costume",""],
+["2027-06-12","BLOCCO PALCOSCENICO","APO Lanza · opzione LANZA MKT","Nozze Istriane — italiana / assieme",""],
+["2027-06-13","BLOCCO PALCOSCENICO","APO MUSIKAMERA o ARCH. FANO 8","Nozze Istriane — assieme",""],
+["2027-06-14","BLOCCO PALCOSCENICO","","",""],
+["2027-06-15","BLOCCO PALCOSCENICO · visite Generali tutto il giorno","workshop GENERALI (22/26) e+f 8/13 + 14,30/18","Nozze Istriane — assieme x 2 / luci",""],
+["2027-06-16","BLOCCO PALCOSCENICO","","Nozze Istriane — luci / generale",""],
+["2027-06-17","BLOCCO PALCOSCENICO","","Nozze Istriane — luci",""],
+["2027-06-18","BLOCCO PALCOSCENICO","","Nozze Istriane — 1^ recita h 19 M° Cilluffo",""],
+["2027-06-19","BLOCCO PALCOSCENICO · Veneto Jazz?","","letture Concerto h 16/20 M° Cilluffo",""],
+["2027-06-20","BLOCCO PALCOSCENICO","","Nozze Istriane — 2^ recita h 17 M° Cilluffo",""],
+["2027-06-21","BLOCCO PALCOSCENICO","","",""],
+["2027-06-22","BLOCCO PALCOSCENICO","","Nozze Istriane — 3^ recita h 19 M° Cilluffo",""],
+["2027-06-23","BLOCCO PALCOSCENICO","","PROVE CONCERTO Orch. su buca 14,30/17,30 + 19/22",""],
+["2027-06-24","BLOCCO PALCOSCENICO","","Nozze Istriane — 4^ recita h 19 M° Cilluffo",""],
+["2027-06-25","BLOCCO PALCOSCENICO","LOG arrivo materiale / prove Pantakin","2 h prova + CONCERTO Orch. Fenice su buca M° Cilluffo h 20",""],
+["2027-06-26","BLOCCO PALCOSCENICO · Veneto Jazz?","LOG prove Pantakin (mattino)","CONCERTO Orch. Fenice su buca h 17 M° Cilluffo",""],
+["2027-06-27","BLOCCO PALCOSCENICO","LOG prove Pantakin","Nozze Istriane — 5^ recita h 17 M° Cilluffo",""],
+["2027-06-28","BLOCCO PALCOSCENICO","LOG prove Pantakin","Nozze Istriane — partenza / adeguamento",""],
+["2027-06-29","BLOCCO PALCOSCENICO","APO Pantakin — spostamento materiale da loggione / mt / prove","adeguamento",""],
+["2027-06-30","BLOCCO PALCOSCENICO","APO Pantakin — prove","letture 4 h",""],
+["2027-07-01","BLOCCO PALCOSCENICO","APO Pantakin h 20","letture 6 h (assiemi se con coro)",""],
+["2027-07-02","BLOCCO PALCOSCENICO","APO Pantakin h 20","letture 6 h (assiemi se con coro)",""],
+["2027-07-03","BLOCCO PALCOSCENICO","APO Pantakin h 20","assestamento + CONCERTO ORCH + CORO h 20 M° Soddy",""],
+["2027-07-04","BLOCCO PALCOSCENICO","APO Pantakin h 12","CONCERTO ORCH + CORO h 17 M° Soddy",""],
+["2027-07-05","BLOCCO PALCOSCENICO","","Master Conservatorio?",""],
+["2027-07-06","BLOCCO PALCOSCENICO","APO Pantakin h 20","Master Conservatorio?",""],
+["2027-07-07","BLOCCO PALCOSCENICO","ESP letture S. Marco · APO Pantakin h 20","Master Conservatorio?",""],
+["2027-07-08","BLOCCO PALCOSCENICO","ESP letture S. Marco · APO Pantakin h 20","Master Conservatorio?",""],
+["2027-07-09","BLOCCO PALCOSCENICO","APO Pantakin h 20","Master Conservatorio?","prove S. Marco"],
+["2027-07-10","BLOCCO PALCOSCENICO","APO cocktail pre concerto S. Marco? · APO Pantakin h 12","Master Conservatorio?","S. MARCO h 21"],
+["2027-07-11","BLOCCO PALCOSCENICO · Veneto Jazz — Stefano Bollani","APO Pantakin h 12","Master Conservatorio?",""],
+["2027-07-12","BLOCCO PALCOSCENICO","","Master Conservatorio?",""],
+["2027-07-13","BLOCCO PALCOSCENICO","APO Pantakin h 20","Master Conservatorio?",""],
+["2027-07-14","BLOCCO PALCOSCENICO","APO Pantakin h 20","Master Conservatorio?",""],
+["2027-07-15","BLOCCO PALCOSCENICO","APO smontaggio / uscita materiale","Master Conservatorio?",""],
+["2027-07-16","BLOCCO PALCOSCENICO","","Master Conservatorio?",""],
+["2027-07-17","BLOCCO PALCOSCENICO · Redentore","","Master Conservatorio?",""],
+["2027-07-18","BLOCCO PALCOSCENICO","","Master Conservatorio?",""],
+["2027-07-19","BLOCCO PALCOSCENICO","","",""],
+["2027-07-20","BLOCCO PALCOSCENICO","","",""],
+["2027-07-21","BLOCCO PALCOSCENICO","","",""],
+["2027-07-22","BLOCCO PALCOSCENICO","","",""],
+["2027-07-23","BLOCCO PALCOSCENICO","","",""],
+["2027-07-24","BLOCCO PALCOSCENICO","","",""],
+["2027-07-25","BLOCCO PALCOSCENICO","","",""],
+["2027-07-26","BLOCCO PALCOSCENICO","","",""],
+["2027-07-27","BLOCCO PALCOSCENICO","","",""],
+["2027-07-28","BLOCCO PALCOSCENICO","","",""],
+["2027-07-29","BLOCCO PALCOSCENICO","","",""],
+["2027-07-30","BLOCCO PALCOSCENICO","","",""],
+["2027-07-31","BLOCCO PALCOSCENICO","","",""]
+];
+
+const MONTHS=["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
+const MONTHS_SHORT=["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
+const WEEKDAYS=["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"];
+const VENUES=["Fenice","Fenice · altre sale","Malibran","Tournée / altra sede"];
+const VENUE_COLORS=["#962D43","#9B792A","#12606A","#554786"];
+const TITLES=[
+  ["Elisir d’amore",/elisir/i],["Pagliacci",/pagliacci/i],["Dittico · Goldoni",/dittico|goldoni/i],
+  ["Tosca · Shanghai",/shanghai/i],["Fedora",/fedora/i],["Carmina Burana",/carmina/i],
+  ["Concerto di Capodanno",/capodanno/i],["Galà Danza",/gal[aà] danza|gala danza/i],
+  ["Béjart",/b[eé]jart/i],["Madama Butterfly",/butterfly/i],["Piccolo Orso",/piccolo orso/i],
+  ["Hansel e Gretel",/hansel/i],["Jenůfa",/jenufa|jenůfa/i],["Parsons Dance",/parsons/i],
+  ["Arca di Noè",/arca di no/i],["Carmen",/carmen/i],["Barbiere Kids",/barbiere\s*kids/i],
+  ["Giselle",/giselle/i],["Il barbiere di Siviglia",/barbiere(?!\s*kids)/i],
+  ["Nozze Istriane",/nozze istriane/i],["Macbeth · Colonia",/macbeth/i],
+  ["Biennale Danza",/biennale/i],["Musikamera",/musikamera/i],["Veneto Jazz",/veneto jazz|v\.\s*jazz/i],
+  ["Premio Venezia",/premio venezia/i],["Pantakin",/pantakin/i]
+];
+const TYPE_RULES={
+  recita:/recita|balletto|spettacolo|gal[aà] danza/i,
+  concerto:/concerto|recital/i,
+  generale:/generale/i,
+  prove:/regia|assieme|italiana|\bita\b|antepiano|luci|tecnica|letture|musicale|prove?/i,
+  allestimento:/montaggio|smontaggio|scarico|carico|arrivo allestimento|uscita allestimento|premontaggio|\bmt\b|\bsmt\b/i,
+  riposo:/riposo|ferie/i
+};
+const BATCH_SIZE=70;
+
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+const normalize=value=>{const lower=String(value).toLowerCase();return typeof lower.normalize==='function'?lower.normalize('NFD').replace(/[\u0300-\u036f]/g,''):lower;};
+const parseISO=iso=>new Date(iso+"T12:00:00");
+const pad2=value=>value<10?'0'+value:String(value);
+const localISO=date=>date.getFullYear()+'-'+pad2(date.getMonth()+1)+'-'+pad2(date.getDate());
+const TODAY_ISO=localISO(new Date());
+const MIN_DATE=D[0][0];
+const MAX_DATE=D[D.length-1][0];
+
+const ODG_DETAILS={
+  "2026-07-28":{
+    issued:"Documento emesso il 27 luglio 2026 alle 12:42",
+    sections:[
+      {title:"Manifestazioni",rows:[
+        {unit:"Fenice",time:"",note:"BLOCCO PALCOSCENICO"}
+      ]},
+      {title:"Altra Compagnia / Ballo",footnote:"BIENNALE DANZA — tecnici impiegati per ciascun turno: 1 macchinista di soffitta, 1 elettricista e 1 fonico.",rows:[
+        {unit:"",time:"08:00–14:00",note:"Malibran · BIENNALE DANZA — arrivo allestimento / MT"},
+        {unit:"",time:"14:00–20:00",note:"Malibran · BIENNALE DANZA — fine MT / puntamento luci"}
+      ]},
+      {title:"Orchestra",rows:[{unit:"",time:"",note:"FERIE"}]},
+      {title:"Coro",rows:[{unit:"",time:"",note:"FERIE"}]},
+      {title:"Maestri collaboratori",rows:[{unit:"Fen 01",time:"",note:"FERIE"}]},
+      {title:"Servizi complessi artistici",rows:[{unit:"3 pers",time:"",note:"FERIE"}]},
+      {title:"Macchinisti",rows:[
+        {unit:"Mal 01",time:"08:00–14:00",note:"Malibran · BIENNALE DANZA — arrivo allestimento / MT"},
+        {unit:"Mal 02",time:"14:00–20:00",note:"Malibran · BIENNALE DANZA — fine MT / puntamento luci"},
+        {unit:"Fen 05",time:"",note:"FERIE — Gr.1 + Gr.2 + Gr.3 + costumi + magazzino"}
+      ]},
+      {title:"Attrezzisti",rows:[{unit:"Fen 04",time:"",note:"FERIE — Gr.1 + Gr.2"}]},
+      {title:"Elettricisti",rows:[
+        {unit:"Mal 01",time:"08:00–14:00",note:"Malibran · BIENNALE DANZA — arrivo allestimento / MT"},
+        {unit:"Mal 02",time:"14:00–20:00",note:"Malibran · BIENNALE DANZA — fine MT / puntamento luci"},
+        {unit:"Fen 04",time:"",note:"FERIE — Gr.1 + Gr.2 + Gr.3"}
+      ]},
+      {title:"Fonici",rows:[
+        {unit:"Mal 01",time:"08:00–14:00",note:"Malibran · BIENNALE DANZA — arrivo allestimento / MT"},
+        {unit:"Mal 02",time:"14:00–20:00",note:"Malibran · BIENNALE DANZA — fine MT / puntamento luci"},
+        {unit:"Fen 04",time:"",note:"FERIE — Gr.1 + Gr.2"}
+      ]},
+      {title:"Sarte",rows:[
+        {unit:"atelier",time:"",note:"FERIE"},
+        {unit:"calzolaio",time:"",note:"FERIE"},
+        {unit:"Fen 04",time:"",note:"FERIE — Gr.1 + Gr.2"}
+      ]},
+      {title:"Magazzino e trasporti",rows:[{unit:"tutti",time:"",note:"FERIE"}]}
+    ]
+  }
+};
+
+function odgSearchText(iso){
+  const detail=ODG_DETAILS[iso];
+  if(!detail)return '';
+  return detail.sections.map(section=>[section.title,section.footnote||'',...section.rows.flatMap(row=>[row.unit,row.time,row.note])].join(' ')).join(' ');
+}
+
+
+function isBlockPalcoscenico(value){
+  const t=normalize(value).replace(/\s+/g,' ').trim();
+  return /^blocco palcoscenico\b|^blocco palco\b/.test(t);
+}
+
+function isMalibranManifestation(value){
+  const t=normalize(value).replace(/\s+/g,' ').trim();
+  if(!t)return false;
+  // Evidenzia eventi, spettacoli, concerti, festival e produzioni nominate al Malibran,
+  // senza colorare le sole attività tecniche generiche.
+  return /biennale|concerto|recital|recita|spettacolo|balletto|danza|festival|musikamera|veneto jazz|premio|gala|carmina|tribute|morricone|mario biondi|pantakin|parsons|giselle|goldoni|dittico|hamburg kammerballet|dear son|hans zimmer|f\. michielin|casa famiglia|banda gdf|manifestaz|evento|cerimonia|convegno|presentazione|proiezione|incontro|rassegna/.test(t);
+}
+
+function odgManifestationRows(iso){
+  const rows=[];
+
+  // Legge soltanto l'eventuale sezione Manifestazioni dell'ODG offline.
+  // "BLOCCO PALCOSCENICO" e "BLOCCO PALCO" non sono manifestazioni e vengono esclusi.
+  const detail=ODG_DETAILS[iso];
+  if(detail && Array.isArray(detail.sections)){
+    detail.sections.forEach(section=>{
+      if(!/manifestaz/i.test(section.title||''))return;
+      (section.rows||[]).forEach(row=>{
+        const unit=String(row.unit||'').trim();
+        const time=String(row.time||'').trim();
+        const note=String(row.note||'').trim();
+        const text=[unit,time,note].filter(Boolean).join(' · ');
+        if(text && !isBlockPalcoscenico(note) && !isBlockPalcoscenico(text)){
+          rows.push({unit,time,note,text});
+        }
+      });
+      if(section.footnote){
+        const note=String(section.footnote).trim();
+        if(note && !isBlockPalcoscenico(note))rows.push({unit:'',time:'',note,text:note});
+      }
+    });
+  }
+
+  const seen=new Set();
+  return rows.filter(row=>{
+    const key=normalize([row.time,row.note].filter(Boolean).join(' ')).replace(/\s+/g,' ').trim();
+    if(!key || seen.has(key))return false;
+    seen.add(key);return true;
+  });
+}
+
+function manifestationHTML(item){
+  if(!item.manifestations.length)return '';
+  const rows=item.manifestations.map(row=>`<div class="manifestazioni-row">
+    ${row.unit?`<span class="manifestazioni-unit">${escapeHTML(row.unit)}</span>${row.time||row.note?' · ':''}`:''}
+    ${row.time?`<span class="manifestazioni-time">${escapeHTML(row.time)}</span>${row.note?' · ':''}`:''}
+    ${row.note?highlight(escapeHTML(row.note),state.query):''}
+  </div>`).join('');
+  const issued=ODG_DETAILS[item.iso] && ODG_DETAILS[item.iso].issued ? ODG_DETAILS[item.iso].issued : '';
+  return `<section class="manifestazioni-odg" aria-label="Manifestazioni da Ordine del Giorno">
+    <div class="manifestazioni-title">◆ Manifestazioni</div>
+    ${rows}
+    ${issued?`<div class="manifestazioni-source">${escapeHTML(issued)}</div>`:''}
+  </section>`;
+}
+
+const INDEX=D.map(row=>{
+  const [iso,...cells]=row;
+  const date=parseISO(iso);
+  const manifestations=odgManifestationRows(iso);
+  const malibranManifestation=Boolean(cells[2] && isMalibranManifestation(cells[2]));
+  const manifestationText=[...manifestations.map(row=>row.text),malibranManifestation?cells[2]:''].filter(Boolean).join(' ');
+  const rawText=[cells.join(' '),odgSearchText(iso),manifestationText].filter(Boolean).join(' ');
+  const normalizedText=normalize(`${iso} ${rawText}`);
+  const holiday=/festiv(?!al)|pasqua|angelo|madonna|redentore/.test(normalizedText);
+  return {
+    iso,cells,date,manifestations,malibranManifestation,
+    day:date.getDate(),month:date.getMonth(),year:date.getFullYear(),weekday:date.getDay(),monthKey:iso.slice(0,7),
+    rawText,normalizedText,holiday,
+    hasActivity:cells.some(Boolean),hasODG:Boolean(ODG_DETAILS[iso]),hasManifestations:manifestations.length>0 || malibranManifestation
+  };
+});
+
+const state={query:'',day:'',month:'',title:'',venue:'',type:'',range:''};
+let filtered=[];
+let rendered=0;
+
+const els={
+  q:document.getElementById('q'),clearSearch:document.getElementById('clearSearch'),
+  filterToggle:document.getElementById('filterToggle'),filters:document.getElementById('filters'),
+  closeFilters:document.getElementById('closeFilters'),backdrop:document.getElementById('backdrop'),
+  activeStrip:document.getElementById('activeStrip'),daySelect:document.getElementById('daySelect'),
+  monthChoices:document.getElementById('monthChoices'),titleChoices:document.getElementById('titleChoices'),
+  venueChoices:document.getElementById('venueChoices'),typeChoices:document.getElementById('typeChoices'),
+  results:document.getElementById('risultati'),resultsCount:document.getElementById('resultsCount'),
+  loadMore:document.getElementById('loadMore'),noResults:document.getElementById('noResults'),
+  resetFilters:document.getElementById('resetFilters'),applyFilters:document.getElementById('applyFilters'),
+  goToday:document.getElementById('goToday'),backTop:document.getElementById('backTop'),
+  odgDialog:document.getElementById('odgDialog'),odgDialogTitle:document.getElementById('odgDialogTitle'),
+  odgContent:document.getElementById('odgContent'),odgClose:document.getElementById('odgClose')
+};
+
+function setupControls(){
+  els.daySelect.min=MIN_DATE;
+  els.daySelect.max=MAX_DATE;
+  const seen=new Set();
+  INDEX.forEach(item=>{
+    if(seen.has(item.monthKey))return;
+    seen.add(item.monthKey);
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='filter-chip';
+    button.dataset.month=item.monthKey;
+    button.textContent=`${MONTHS_SHORT[item.month]} ’${String(item.year).slice(2)}`;
+    button.setAttribute('aria-pressed','false');
+    els.monthChoices.appendChild(button);
+  });
+  TITLES.forEach(([label],index)=>{
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='filter-chip';
+    button.dataset.title=String(index);
+    button.textContent=label;
+    button.setAttribute('aria-pressed','false');
+    els.titleChoices.appendChild(button);
+  });
+}
+
+function dateRangeFor(code){
+  const today=parseISO(TODAY_ISO);
+  if(code==='today')return [TODAY_ISO,TODAY_ISO];
+  if(code==='week'){
+    // Mostra sempre sette giornate consecutive, inclusa quella odierna.
+    // In questo modo, anche quando oggi è domenica, il filtro non si limita a un solo giorno.
+    const start=new Date(today);
+    const end=new Date(today);end.setDate(end.getDate()+6);
+    return [localISO(start),localISO(end)];
+  }
+  if(code==='month'){
+    const start=new Date(today.getFullYear(),today.getMonth(),1,12);
+    const end=new Date(today.getFullYear(),today.getMonth()+1,0,12);
+    return [localISO(start),localISO(end)];
+  }
+  if(code==='30days'){
+    const end=new Date(today);end.setDate(end.getDate()+29);
+    return [TODAY_ISO,localISO(end)];
+  }
+  return null;
+}
+
+function matchesType(item){
+  if(!state.type)return true;
+  if(state.type==='festivo')return item.holiday;
+  if(state.type==='manifestazione')return item.hasManifestations;
+  return TYPE_RULES[state.type].test(item.rawText);
+}
+
+function filterData(){
+  const terms=normalize(state.query.trim()).split(/\s+/).filter(Boolean);
+  const range=dateRangeFor(state.range);
+  filtered=INDEX.filter(item=>{
+    if(terms.length && !terms.every(t=>item.normalizedText.includes(t)))return false;
+    if(state.day && item.iso!==state.day)return false;
+    if(state.month && item.monthKey!==state.month)return false;
+    if(range && (item.iso<range[0] || item.iso>range[1]))return false;
+    if(state.title!=='' && !TITLES[Number(state.title)][1].test(item.rawText))return false;
+    if(state.venue!=='' && !item.cells[Number(state.venue)])return false;
+    if(!matchesType(item))return false;
+    return true;
+  });
+  rendered=0;
+  els.results.innerHTML='';
+  renderBatch();
+  updateInterface();
+}
+
+function strongen(text){
+  let html=escapeHTML(text);
+  html=html.replace(/(\d+[\^°ˆ]?\s*(?:RECITA|recita|BALLETTO|balletto)[^·]*)/g,'<strong>$1</strong>');
+  html=html.replace(/((?:CONCERTO|Concerto|GENERALE|Generale)[^·]*)/g,'<strong>$1</strong>');
+  return html;
+}
+
+function highlight(html,term){
+  const words=term.trim().split(/\s+/).filter(w=>w.length>=2);
+  if(!words.length)return html;
+  const safe=words.map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|');
+  try{return html.replace(new RegExp(`(${safe})(?![^<]*>)`,'gi'),'<mark>$1</mark>');}
+  catch{return html;}
+}
+
+function eventHTML(text,venueIndex){
+  const malibranManifestazione=venueIndex===2 && isMalibranManifestation(text);
+  return `<div class="event-row${malibranManifestazione?' malibran-manifestazione':''}" style="--venue-color:${malibranManifestazione?'var(--c-manifestazioni)':VENUE_COLORS[venueIndex]}">
+    <span class="venue-name">${escapeHTML(VENUES[venueIndex])}</span>
+    <span class="event-text">${highlight(strongen(text),state.query)}</span>
+  </div>`;
+}
+
+function renderBatch(){
+  const end=Math.min(rendered+BATCH_SIZE,filtered.length);
+  let html='';
+  let previousMonth=rendered?filtered[rendered-1].monthKey:'';
+  for(let i=rendered;i<end;i++){
+    const item=filtered[i];
+    if(item.monthKey!==previousMonth){
+      previousMonth=item.monthKey;
+      html+=`<div class="month-heading"><strong>${MONTHS[item.month]}</strong><span>${item.year}</span></div>`;
+    }
+    const isToday=item.iso===TODAY_ISO;
+    let events='';
+    item.cells.forEach((text,index)=>{
+      if(!text)return;
+      if(state.venue!=='' && index!==Number(state.venue))return;
+      if(state.type==='manifestazione' && !(index===2 && item.malibranManifestation))return;
+      events+=eventHTML(text,index);
+    });
+    const showManifestations=state.type==='manifestazione' || state.venue==='';
+    const manifestations=showManifestations?manifestationHTML(item):'';
+    if(!events && !manifestations)events='<div class="empty-day">Nessuna attività indicata.</div>';
+    const badges=`${isToday?'<span class="badge today-badge">Oggi</span>':''}${item.holiday?'<span class="badge holiday-badge">Festivo</span>':''}${item.hasODG?'<span class="badge odg-badge">ODG salvato offline</span>':''}${item.hasManifestations?'<span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span>':''}`;
+    const odgButton=`<button class="odg-button${item.hasODG?'':' odg-online'}" type="button" data-odg="${item.iso}" aria-label="${item.hasODG?'Apri il dettaglio salvato dell’Ordine del Giorno':'Apri online l’Ordine del Giorno di questa data'}">${item.hasODG?'☰ Dettaglio ODG':'↗ Apri ODG'}</button>`;
+    html+=`<article class="day-card${item.weekday===0?' sunday':''}${item.holiday?' holiday':''}${isToday?' today':''}${item.hasManifestations?' manifestation-day':''}" id="day-${item.iso}" data-date="${item.iso}">
+      <div class="day-rail">
+        <span class="day-number">${item.day}</span>
+        <span class="day-week">${WEEKDAYS[item.weekday].slice(0,3)}</span>
+        <span class="day-month">${MONTHS_SHORT[item.month]}</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">${badges}${odgButton}<button class="share-day" type="button" data-share="${item.iso}" aria-label="Condividi questa giornata" title="Condividi">📤 Condividi</button></div>
+        ${manifestations}
+        ${events}
+      </div>
+    </article>`;
+  }
+  els.results.insertAdjacentHTML('beforeend',html);
+  rendered=end;
+  els.loadMore.hidden=rendered>=filtered.length;
+}
+
+function activeCount(){
+  return Object.values(state).filter(Boolean).length;
+}
+
+function labelForRange(code){return ({today:'Oggi',week:'Questa settimana',month:'Questo mese','30days':'Prossimi 30 giorni'})[code]||''}
+function readableDay(iso){
+  const d=parseISO(iso);
+  return `${d.getDate()} ${MONTHS[d.getMonth()].toLocaleLowerCase('it')} ${d.getFullYear()}`;
+}
+
+function activeChips(){
+  const chips=[];
+  if(state.query)chips.push(['query',`Ricerca: “${state.query}”`]);
+  if(state.day)chips.push(['day',readableDay(state.day)]);
+  if(state.month){const d=parseISO(state.month+'-01');chips.push(['month',`${MONTHS[d.getMonth()]} ${d.getFullYear()}`]);}
+  if(state.title!=='')chips.push(['title',TITLES[Number(state.title)][0]]);
+  if(state.venue!=='')chips.push(['venue',VENUES[Number(state.venue)]]);
+  if(state.type)chips.push(['type',({recita:'Recite',concerto:'Concerti',generale:'Generali',prove:'Prove',allestimento:'Allestimenti',riposo:'Riposi / ferie',festivo:'Festivi',manifestazione:'Manifestazioni Malibran / ODG'})[state.type]]);
+  if(state.range)chips.push(['range',labelForRange(state.range)]);
+  return chips;
+}
+
+function updateInterface(){
+  const n=filtered.length;
+  els.resultsCount.textContent=`${n} ${n===1?'giornata':'giornate'}`;
+  els.noResults.hidden=n!==0;
+  els.clearSearch.hidden=!state.query;
+  els.q.value=state.query;
+  els.daySelect.value=state.day;
+  document.querySelectorAll('[data-month]').forEach(button=>{
+    const active=button.dataset.month===state.month;
+    button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+  });
+  document.querySelectorAll('[data-title]').forEach(button=>{
+    const active=button.dataset.title===state.title;
+    button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+  });
+  document.querySelectorAll('[data-range]').forEach(button=>button.classList.toggle('active',button.dataset.range===state.range));
+  document.querySelectorAll('[data-venue]').forEach(button=>{
+    const active=button.dataset.venue===state.venue;
+    button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+  });
+  document.querySelectorAll('[data-type]').forEach(button=>{
+    const active=button.dataset.type===state.type;
+    button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+  });
+  const chips=activeChips();
+  els.activeStrip.hidden=chips.length===0;
+  els.activeStrip.innerHTML=chips.length?`<span class="active-label">Filtri attivi</span>${chips.map(([key,label])=>`<button type="button" class="active-chip" data-clear="${key}" title="Rimuovi filtro">${escapeHTML(label)} ×</button>`).join('')}`:'';
+  els.filterToggle.classList.toggle('has-filters',chips.length>0);
+  document.documentElement.style.setProperty('--desktop-sticky',chips.length?'128px':'76px');
+}
+
+function clearPeriod(){
+  state.day='';state.month='';state.range='';
+}
+function selectSingle(key,value){
+  state[key]=state[key]===value?'':value;
+}
+function resetAll(){
+  Object.keys(state).forEach(key=>state[key]='');
+  filterData();
+}
+function openFilters(){
+  if(!els.filterToggle)return;
+  els.filters.classList.add('open');
+  els.backdrop.hidden=false;
+  els.filterToggle.setAttribute('aria-expanded','true');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>els.closeFilters.focus(),20);
+}
+function closeFilters(){
+  if(!els.filterToggle)return;
+  els.filters.classList.remove('open');
+  els.backdrop.hidden=true;
+  els.filterToggle.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+function goToToday(){
+  if(TODAY_ISO<MIN_DATE || TODAY_ISO>MAX_DATE){
+    alert(`La data odierna non rientra nel prospetto, che va dal ${readableDay(MIN_DATE)} al ${readableDay(MAX_DATE)}.`);
+    return;
+  }
+  const existing=document.getElementById(`day-${TODAY_ISO}`);
+  if(existing){existing.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  resetAll();
+  while(!document.getElementById(`day-${TODAY_ISO}`) && rendered<filtered.length)renderBatch();
+  requestAnimationFrame(()=>{const target=document.getElementById('day-'+TODAY_ISO);if(target)target.scrollIntoView({behavior:'smooth',block:'center'});});
+}
+function printCurrentView(){
+  while(rendered<filtered.length)renderBatch();
+  window.print();
+}
+
+function odgPlainText(iso){
+  const detail=ODG_DETAILS[iso];
+  if(!detail)return '';
+  const d=parseISO(iso);
+  let text=`ORDINE DEL GIORNO — ${WEEKDAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  detail.sections.forEach(section=>{
+    text+=`\n\n${section.title.toUpperCase()}`;
+    section.rows.forEach(row=>{
+      const parts=[row.unit,row.time,row.note].filter(Boolean);
+      text+=`\n• ${parts.join(' · ')}`;
+    });
+    if(section.footnote)text+=`\n${section.footnote}`;
+  });
+  return text;
+}
+
+function openODG(iso){
+  const detail=ODG_DETAILS[iso];
+  const onlineURL=`https://webapp.teatrolafenice.it/odg-giorno?date=${iso.replaceAll('-','')}&key=all`;
+  if(!detail){
+    const opened=window.open(onlineURL,'_blank');
+    if(opened)opened.opener=null;
+    else window.location.href=onlineURL;
+    return;
+  }
+  const d=parseISO(iso);
+  els.odgDialogTitle.textContent=`${WEEKDAYS[d.getDay()]} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  const sections=detail.sections.map(section=>`
+    <section class="odg-section">
+      <h3>${escapeHTML(section.title)}</h3>
+      <div class="odg-rows">${section.rows.map(row=>`
+        <div class="odg-row">
+          <div class="odg-unit">${escapeHTML(row.unit||'—')}</div>
+          <div class="odg-time">${escapeHTML(row.time||'')}</div>
+          <div class="odg-note">${escapeHTML(row.note||'')}</div>
+        </div>`).join('')}</div>
+      ${section.footnote?`<p class="odg-footnote">${escapeHTML(section.footnote)}</p>`:''}
+    </section>`).join('');
+  els.odgContent.innerHTML=`
+    <div class="odg-toolbar">
+      <a class="odg-action primary" href="${onlineURL}" target="_blank" rel="noopener">Apri ODG online</a>
+      <button class="odg-action" type="button" id="shareODG">📤 Condividi ODG</button>
+    </div>
+    <p class="odg-source"><strong>Fonte:</strong> ${escapeHTML(detail.issued)}. Il dettaglio è salvato dentro questo file HTML e resta consultabile anche offline.</p>
+    ${sections}`;
+  els.odgDialog.hidden=false;
+  document.body.classList.add('odg-open');
+  els.odgClose.focus();
+  document.getElementById('shareODG').addEventListener('click',async()=>{
+    const text=odgPlainText(iso);
+    if(navigator.share){try{await navigator.share({title:'Ordine del Giorno La Fenice',text});}catch{}}
+    else if(navigator.clipboard){await navigator.clipboard.writeText(text);const b=document.getElementById('shareODG');b.textContent='✓ Copiato';setTimeout(()=>b.textContent='📤 Condividi ODG',1500);}
+  });
+}
+
+function closeODG(){
+  els.odgDialog.hidden=true;
+  document.body.classList.remove('odg-open');
+}
+
+let debounce;
+els.q.addEventListener('input',event=>{
+  state.query=event.target.value;
+  clearTimeout(debounce);
+  debounce=setTimeout(filterData,90);
+});
+els.clearSearch.addEventListener('click',()=>{state.query='';filterData();els.q.focus();});
+
+document.querySelector('.quick-row').addEventListener('click',event=>{
+  const button=event.target.closest('[data-range]');if(!button)return;
+  const value=button.dataset.range;
+  const wasActive=state.range===value;
+  clearPeriod();
+  state.range=wasActive?'':value;
+  filterData();
+});
+
+els.daySelect.addEventListener('change',event=>{
+  const value=event.target.value;
+  clearPeriod();state.day=value;filterData();
+});
+els.monthChoices.addEventListener('click',event=>{
+  const button=event.target.closest('[data-month]');if(!button)return;
+  const value=button.dataset.month;
+  const wasActive=state.month===value;
+  clearPeriod();state.month=wasActive?'':value;filterData();
+});
+els.titleChoices.addEventListener('click',event=>{
+  const button=event.target.closest('[data-title]');if(!button)return;
+  selectSingle('title',button.dataset.title);filterData();
+});
+els.venueChoices.addEventListener('click',event=>{
+  const button=event.target.closest('[data-venue]');if(!button)return;
+  selectSingle('venue',button.dataset.venue);filterData();
+});
+els.typeChoices.addEventListener('click',event=>{
+  const button=event.target.closest('[data-type]');if(!button)return;
+  selectSingle('type',button.dataset.type);filterData();
+});
+els.activeStrip.addEventListener('click',event=>{
+  const button=event.target.closest('[data-clear]');if(!button)return;
+  state[button.dataset.clear]='';filterData();
+});
+els.resetFilters.addEventListener('click',resetAll);
+els.applyFilters.addEventListener('click',closeFilters);
+els.loadMore.addEventListener('click',renderBatch);
+els.goToday.addEventListener('click',goToToday);
+
+els.results.addEventListener('click',event=>{
+  const button=event.target.closest('[data-odg]');
+  if(button)openODG(button.dataset.odg);
+});
+els.odgClose.addEventListener('click',closeODG);
+els.odgDialog.addEventListener('click',event=>{if(event.target===els.odgDialog)closeODG();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!els.odgDialog.hidden)closeODG();});
+document.getElementById('printBtn').addEventListener('click',printCurrentView);
+window.addEventListener('scroll',()=>{els.backTop.hidden=window.scrollY<650},{passive:true});
+els.backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+document.documentElement.classList.add('js-enabled');
+if(/Chrome\//.test(navigator.userAgent))document.documentElement.classList.add('is-chrome');
+setupControls();
+filterData();
+</script>
+<script>
+// --- Condivisione di una giornata (WhatsApp, e-mail, appunti) ---
+document.getElementById('risultati').addEventListener('click',event=>{
+  const button=event.target.closest('.share-day');
+  if(!button)return;
+  const item=INDEX.find(x=>x.iso===button.dataset.share);
+  if(!item)return;
+  let text=`LA FENICE — ${WEEKDAYS[item.weekday]} ${item.day} ${MONTHS[item.month].toLocaleLowerCase('it')} ${item.year}`;
+  item.cells.forEach((cell,i)=>{if(cell)text+=`\n\n▸ ${VENUES[i].toUpperCase()}\n${cell}`;});
+  if(!item.hasActivity)text+='\n\nNessuna attività indicata.';
+  if(navigator.share){
+    navigator.share({title:'La Fenice · Prospetto 2026–27',text}).catch(()=>{});
+  }else if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>{
+      const old=button.textContent;button.textContent='✓ Copiato';
+      setTimeout(()=>{button.textContent=old;},1500);
+    });
+  }
+});
+// --- Invio sulla tastiera: chiude la tastiera e mostra i risultati ---
+document.getElementById('q').addEventListener('keydown',event=>{
+  if(event.key==='Enter')event.target.blur();
+});
+</script>
+
+<script>
+// --- PWA / aggiornamenti ---
+(() => {
+  const APP_VERSION='1.0.0';
+  const updateBtn=document.getElementById('updateBtn');
+  const banner=document.getElementById('updateBanner');
+  const updateTitle=document.getElementById('updateTitle');
+  const updateMessage=document.getElementById('updateMessage');
+  const updateNow=document.getElementById('updateNow');
+  const updateLater=document.getElementById('updateLater');
+  const versionBadge=document.getElementById('versionBadge');
+  if(versionBadge) versionBadge.textContent=`v${APP_VERSION}`;
+  let reg=null;
+
+  const showBanner=(title,msg,canUpdate=false)=>{
+    if(!banner)return;
+    updateTitle.textContent=title;
+    updateMessage.textContent=msg;
+    updateNow.hidden=!canUpdate;
+    updateLater.textContent=canUpdate?'Dopo':'Chiudi';
+    banner.hidden=false;
+  };
+  const hideBanner=()=>{ if(banner) banner.hidden=true; };
+
+  async function registerSW(){
+    if(!('serviceWorker' in navigator) || location.protocol==='file:' || location.protocol==='content:') return;
+    try{
+      reg=await navigator.serviceWorker.register('./sw.js',{scope:'./'});
+      reg.addEventListener('updatefound',()=>{
+        const worker=reg.installing;
+        if(!worker)return;
+        worker.addEventListener('statechange',()=>{
+          if(worker.state==='installed' && navigator.serviceWorker.controller){
+            updateBtn?.classList.add('has-update');
+            showBanner('Aggiornamento pronto','È disponibile una versione più recente dell’app.',true);
+          }
+        });
+      });
+      navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload());
+    }catch(err){ console.warn('Service worker non disponibile',err); }
+  }
+
+  async function forceRefresh(){
+    updateBtn?.classList.add('is-checking');
+    try{
+      if(reg) await reg.update();
+      // Pulizia delle cache dell'app per forzare il recupero della versione pubblicata.
+      if('caches' in window){
+        const keys=await caches.keys();
+        await Promise.all(keys.filter(k=>k.startsWith('fenice-2026-27-')).map(k=>caches.delete(k)));
+      }
+      const u=new URL('./',location.href);u.searchParams.set('_refresh',Date.now());
+      location.replace(u.href);
+    }catch(err){
+      showBanner('Aggiornamento non riuscito','Controlli la connessione Internet e riprovi.',false);
+      updateBtn?.classList.remove('is-checking');
+    }
+  }
+
+  async function checkForUpdate(silent=true){
+    if(location.protocol==='file:' || location.protocol==='content:'){
+      if(!silent) showBanner('Versione locale','Per gli aggiornamenti automatici apra l’app dal link GitHub Pages, non dal file content://.',false);
+      return;
+    }
+    updateBtn?.classList.add('is-checking');
+    try{
+      if(reg) await reg.update();
+      // Un controllo di rete con cache-busting rende il pulsante utile anche se cambia solo index.html.
+      const r=await fetch(`./index.html?_check=${Date.now()}`,{cache:'no-store'});
+      if(!r.ok) throw new Error('network');
+      const remote=await r.text();
+      const m=remote.match(/const APP_VERSION='([^']+)'/);
+      const remoteVersion=m?.[1] || APP_VERSION;
+      if(remoteVersion!==APP_VERSION || reg?.waiting){
+        updateBtn?.classList.add('has-update');
+        showBanner('Aggiornamento disponibile',`Versione pubblicata: ${remoteVersion}.`,true);
+      }else if(!silent){
+        showBanner('App aggiornata',`Stai usando la versione ${APP_VERSION}.`,false);
+      }
+    }catch(err){
+      if(!silent) showBanner('Controllo non disponibile','Sei offline oppure GitHub Pages non è raggiungibile.',false);
+    }finally{ updateBtn?.classList.remove('is-checking'); }
+  }
+
+  updateBtn?.addEventListener('click',()=>checkForUpdate(false));
+  updateNow?.addEventListener('click',forceRefresh);
+  updateLater?.addEventListener('click',hideBanner);
+  window.addEventListener('online',()=>checkForUpdate(true));
+  registerSW().then(()=>checkForUpdate(true));
+  setInterval(()=>checkForUpdate(true),30*60*1000);
+})();
+</script>
+
+</body>
+</html>

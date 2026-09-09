@@ -1,0 +1,24 @@
+LA FENICE · 2026–27 — PWA AGGIORNABILE
+
+CONTENUTO
+- index.html: calendario operativo con ODG integrati
+- manifest.webmanifest: installazione come app
+- sw.js: funzionamento offline + recupero della versione più recente
+- icon-192.png / icon-512.png: icone app
+- .nojekyll: compatibilità GitHub Pages
+
+PUBBLICAZIONE SU GITHUB PAGES
+1. Crea un repository GitHub, per esempio: fenice-2026-27
+2. Carica TUTTI i file di questa cartella nella radice del repository.
+3. In GitHub: Settings > Pages > Deploy from a branch > main > /(root) > Save.
+4. Apri l'indirizzo GitHub Pages generato e installa l'app da Chrome.
+
+AGGIORNAMENTI FUTURI
+- Per aggiornare calendario/ODG, sostituisci index.html nel repository con la nuova versione.
+- L'app controlla gli aggiornamenti all'apertura, quando torna online e ogni 30 minuti.
+- Il pulsante ↻ nella testata esegue un controllo manuale.
+- Il pulsante "Aggiorna" forza il recupero dei file pubblicati e ricarica l'app.
+- Evita di aprire la copia content:// del telefono: quella resta un file locale e non può auto-aggiornarsi.
+
+NOTA VERSIONE
+La versione iniziale è 1.0.0. Se in futuro modifichi la stringa APP_VERSION dentro index.html, il controllo mostrerà anche il numero della nuova versione.

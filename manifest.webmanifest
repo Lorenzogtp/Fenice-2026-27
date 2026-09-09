@@ -1,0 +1,27 @@
+{
+  "id": "./",
+  "name": "La Fenice · 2026–27",
+  "short_name": "Fenice 26–27",
+  "description": "Calendario operativo La Fenice 2026–27 con ODG integrati, ricerca, filtri e aggiornamento online.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F5F3",
+  "theme_color": "#07383E",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
