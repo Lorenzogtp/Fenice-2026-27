@@ -1,27 +1,18 @@
 {
   "id": "./",
-  "name": "La Fenice · 2026–27",
+  "name": "La Fenice · Prospetto, Manifestazioni e ODG 2026–27",
   "short_name": "Fenice 26–27",
-  "description": "Calendario operativo La Fenice 2026–27 con ODG integrati, ricerca, filtri e aggiornamento online.",
-  "lang": "it",
+  "description": "Calendario operativo La Fenice 2026–27 con Manifestazioni, ODG, ricerca, filtri e aggiornamento online.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#F4F5F3",
   "theme_color": "#07383E",
   "orientation": "any",
+  "lang": "it",
   "icons": [
-    {
-      "src": "./icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "./icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    {"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }

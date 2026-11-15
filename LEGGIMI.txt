@@ -1,0 +1,20 @@
+LA FENICE · PROSPETTO, MANIFESTAZIONI E ODG 2026–27 — PWA v1.2.0
+
+Questa cartella contiene la versione installabile e aggiornabile del file HTML fornito.
+
+PUBBLICAZIONE SU GITHUB PAGES
+1. Aprire il repository GitHub usato per l'app.
+2. Caricare nella radice TUTTI i file di questa cartella, sostituendo quelli omonimi.
+3. Fare Commit changes.
+4. Verificare Settings > Pages: Deploy from a branch, branch main, /(root).
+5. Aprire il link GitHub Pages e premere ↻ Aggiorna nell'app.
+
+FILE PRINCIPALI
+- index.html: applicazione completa
+- manifest.webmanifest: installazione PWA
+- sw.js: cache offline e aggiornamenti
+- icon-192.png / icon-512.png: icone
+- .nojekyll: compatibilità GitHub Pages
+
+NOTA
+Il file originale salvato da Chrome conteneva codice iniettato da estensioni del browser (Reverso/Grammarly). È stato rimosso perché non fa parte dell'app.

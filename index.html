@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#07383E">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="format-detection" content="telephone=no">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icon-192.png">
-<meta name="application-name" content="La Fenice 2026–27">
-<meta name="apple-mobile-web-app-title" content="Fenice 26–27">
-<meta name="description" content="Calendario operativo La Fenice 2026–27 con ODG integrati, ricerca, filtri e aggiornamento online.">
+<!DOCTYPE html>
 
+<!-- saved from url=(0044)https://lorenzogtp.github.io/Fenice-2026-27/ -->
+<html class="js-enabled" lang="it" style="--desktop-sticky: 76px;"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#07383E" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="telephone=no" name="format-detection"/>
+<link href="./manifest.webmanifest" rel="manifest"/>
+<link href="./icon-192.png" rel="apple-touch-icon"/>
+<meta content="La Fenice 2026–27" name="application-name"/>
+<meta content="Fenice 26–27" name="apple-mobile-web-app-title"/>
+<meta content="Calendario operativo La Fenice 2026–27 con ODG integrati, ricerca, filtri e aggiornamento online." name="description"/>
 <title>La Fenice · Prospetto, Manifestazioni e ODG 2026–27</title>
 <style>
 :root{
@@ -507,147 +507,1462 @@ body.odg-open{overflow:hidden}
 @media(max-width:560px){.version-badge{display:none}.update-banner{align-items:flex-start}.update-actions{flex-direction:column}}
 
 </style>
-</head>
+<link href="./icon-192.png" rel="icon" sizes="192x192" type="image/png"/><meta content="1.2.0" name="app-version"/></head>
 <body>
-<noscript><div style="margin:12px;padding:14px;border:2px solid #C9A84D;border-radius:12px;background:#FFF7D9;color:#172321;font-family:Arial,sans-serif;font-size:16px;line-height:1.45"><strong>JavaScript non è attivo.</strong><br>Per utilizzare ricerca e filtri, abiliti JavaScript in Google Chrome e riapra il file.</div></noscript>
+<noscript><div style="margin:12px;padding:14px;border:2px solid #C9A84D;border-radius:12px;background:#FFF7D9;color:#172321;font-family:Arial,sans-serif;font-size:16px;line-height:1.45"><strong>JavaScript non è attivo.</strong><br/>Per utilizzare ricerca e filtri, abiliti JavaScript in Google Chrome e riapra il file.</div></noscript>
 <a class="skip-link" href="#risultati">Vai ai risultati</a>
-
 <header class="appbar">
-  <div class="appbar-inner">
-    <div class="brand-row">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">LF</div>
-        <div class="brand-copy">
-          <div class="brand-title">LA FENICE · 2026–27</div>
-          <div class="brand-subtitle">Calendario operativo · Manifestazioni evidenziate · aggiornabile</div>
-        </div>
-      </div>
-      <div class="header-actions">
-        <button class="icon-button update-button" id="updateBtn" type="button" aria-label="Controlla aggiornamenti" title="Aggiorna">↻<span class="label"> Aggiorna</span></button>
-        <button class="icon-button" id="printBtn" type="button" aria-label="Stampa il prospetto" title="Stampa">⎙<span class="label"> Stampa</span></button>
-      </div>
-    </div>
-
-    <div class="search-row">
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.8-3.8"></path></svg>
-        <label class="visually-hidden" for="q">Cerca nel prospetto</label>
-        <input id="q" type="search" placeholder="Cerca (anche più parole): carmen generale…" enterkeyhint="search" autocomplete="off" spellcheck="false">
-        <button class="clear-search" id="clearSearch" type="button" aria-label="Cancella la ricerca" hidden>✕</button>
-      </div>
-      <button class="filter-toggle" id="filterToggle" type="button" aria-controls="filters" aria-expanded="false"><span class="filter-dot" aria-hidden="true"></span>Filtri</button>
-    </div>
-
-    <nav class="quick-row" aria-label="Filtri rapidi per periodo">
-      <button class="quick" type="button" data-range="today">Oggi</button>
-      <button class="quick" type="button" data-range="week">Questa settimana</button>
-      <button class="quick" type="button" data-range="month">Questo mese</button>
-      <button class="quick" type="button" data-range="30days">30 giorni</button>
-    </nav>
-  </div>
-  <div class="active-strip" id="activeStrip" hidden aria-label="Filtri attivi"></div>
+<div class="appbar-inner">
+<div class="brand-row">
+<div class="brand">
+<div aria-hidden="true" class="brand-mark">LF</div>
+<div class="brand-copy">
+<div class="brand-title">LA FENICE · 2026–27</div>
+<div class="brand-subtitle">Calendario operativo · Manifestazioni evidenziate · aggiornabile</div>
+</div>
+</div>
+<div class="header-actions">
+<button aria-label="Controlla aggiornamenti" class="icon-button update-button" id="updateBtn" title="Aggiorna" type="button">↻<span class="label"> Aggiorna</span></button>
+<button aria-label="Stampa il prospetto" class="icon-button" id="printBtn" title="Stampa" type="button">⎙<span class="label"> Stampa</span></button>
+</div>
+</div>
+<div class="search-row">
+<div class="search-wrap">
+<svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.8-3.8"></path></svg>
+<label class="visually-hidden" for="q">Cerca nel prospetto</label>
+<input autocomplete="off" enterkeyhint="search" id="q" placeholder="Cerca (anche più parole): carmen generale…" spellcheck="false" type="search"/>
+<button aria-label="Cancella la ricerca" class="clear-search" hidden="" id="clearSearch" type="button">✕</button>
+</div>
+<button aria-controls="filters" aria-expanded="false" class="filter-toggle" id="filterToggle" type="button"><span aria-hidden="true" class="filter-dot"></span>Filtri</button>
+</div>
+<nav aria-label="Filtri rapidi per periodo" class="quick-row">
+<button class="quick" data-range="today" type="button">Oggi</button>
+<button class="quick" data-range="week" type="button">Questa settimana</button>
+<button class="quick" data-range="month" type="button">Questo mese</button>
+<button class="quick" data-range="30days" type="button">30 giorni</button>
+</nav>
+</div>
+<div aria-label="Filtri attivi" class="active-strip" hidden="" id="activeStrip"></div>
 </header>
-
-<div class="backdrop" id="backdrop" hidden></div>
+<div class="backdrop" hidden="" id="backdrop"></div>
 <div class="page-shell">
-  <div class="layout">
-    <aside class="filters" id="filters" aria-label="Filtri del calendario">
-      <div class="filter-head">
-        <h2>Filtri</h2>
-        <button class="close-filters" id="closeFilters" type="button" aria-label="Chiudi filtri">✕</button>
+<div class="layout">
+<aside aria-label="Filtri del calendario" class="filters" id="filters">
+<div class="filter-head">
+<h2>Filtri</h2>
+<button aria-label="Chiudi filtri" class="close-filters" id="closeFilters" type="button">✕</button>
+</div>
+<div class="filter-group">
+<label class="filter-label" for="daySelect">Scegli un giorno dal calendario</label>
+<input class="control" id="daySelect" max="2027-12-31" min="2026-07-26" type="date"/>
+</div>
+<div class="filter-group">
+<span class="filter-label">Mese</span>
+<div aria-label="Seleziona un mese" class="direct-scroll" id="monthChoices"><button aria-pressed="false" class="filter-chip" data-month="2026-07" type="button">lug ’26</button><button aria-pressed="false" class="filter-chip" data-month="2026-08" type="button">ago ’26</button><button aria-pressed="false" class="filter-chip" data-month="2026-09" type="button">set ’26</button><button aria-pressed="false" class="filter-chip" data-month="2026-10" type="button">ott ’26</button><button aria-pressed="false" class="filter-chip" data-month="2026-11" type="button">nov ’26</button><button aria-pressed="false" class="filter-chip" data-month="2026-12" type="button">dic ’26</button><button aria-pressed="false" class="filter-chip" data-month="2027-01" type="button">gen ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-02" type="button">feb ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-03" type="button">mar ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-04" type="button">apr ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-05" type="button">mag ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-06" type="button">giu ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-07" type="button">lug ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-08" type="button">ago ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-09" type="button">set ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-10" type="button">ott ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-11" type="button">nov ’27</button><button aria-pressed="false" class="filter-chip" data-month="2027-12" type="button">dic ’27</button></div>
+</div>
+<div class="filter-group">
+<span class="filter-label">Titolo / produzione</span>
+<div aria-label="Seleziona un titolo o una produzione" class="direct-scroll title-scroll" id="titleChoices"><button aria-pressed="false" class="filter-chip" data-title="0" type="button">Elisir d’amore</button><button aria-pressed="false" class="filter-chip" data-title="1" type="button">Pagliacci</button><button aria-pressed="false" class="filter-chip" data-title="2" type="button">Dittico · Goldoni</button><button aria-pressed="false" class="filter-chip" data-title="3" type="button">Tosca · Shanghai</button><button aria-pressed="false" class="filter-chip" data-title="4" type="button">Fedora</button><button aria-pressed="false" class="filter-chip" data-title="5" type="button">Carmina Burana</button><button aria-pressed="false" class="filter-chip" data-title="6" type="button">Concerto di Capodanno</button><button aria-pressed="false" class="filter-chip" data-title="7" type="button">Galà Danza</button><button aria-pressed="false" class="filter-chip" data-title="8" type="button">Béjart</button><button aria-pressed="false" class="filter-chip" data-title="9" type="button">Madama Butterfly</button><button aria-pressed="false" class="filter-chip" data-title="10" type="button">Piccolo Orso</button><button aria-pressed="false" class="filter-chip" data-title="11" type="button">Hansel e Gretel</button><button aria-pressed="false" class="filter-chip" data-title="12" type="button">Jenůfa</button><button aria-pressed="false" class="filter-chip" data-title="13" type="button">Parsons Dance</button><button aria-pressed="false" class="filter-chip" data-title="14" type="button">Arca di Noè</button><button aria-pressed="false" class="filter-chip" data-title="15" type="button">Carmen</button><button aria-pressed="false" class="filter-chip" data-title="16" type="button">Barbiere Kids</button><button aria-pressed="false" class="filter-chip" data-title="17" type="button">Giselle</button><button aria-pressed="false" class="filter-chip" data-title="18" type="button">Il barbiere di Siviglia</button><button aria-pressed="false" class="filter-chip" data-title="19" type="button">Nozze Istriane</button><button aria-pressed="false" class="filter-chip" data-title="20" type="button">Macbeth · Colonia</button><button aria-pressed="false" class="filter-chip" data-title="21" type="button">Biennale Danza</button><button aria-pressed="false" class="filter-chip" data-title="22" type="button">Musikamera</button><button aria-pressed="false" class="filter-chip" data-title="23" type="button">Veneto Jazz</button><button aria-pressed="false" class="filter-chip" data-title="24" type="button">Premio Venezia</button><button aria-pressed="false" class="filter-chip" data-title="25" type="button">Pantakin</button></div>
+</div>
+<div class="filter-group">
+<span class="filter-label">Sezione / sede</span>
+<div class="choice-grid" id="venueChoices">
+<button aria-pressed="false" class="choice venue" data-venue="0" style="--choice-color:var(--c-fenice)" type="button"><span class="venue-dot"></span>Fenice</button>
+<button aria-pressed="false" class="choice venue" data-venue="1" style="--choice-color:var(--c-sale)" type="button"><span class="venue-dot"></span>Altre sale</button>
+<button aria-pressed="false" class="choice venue" data-venue="2" style="--choice-color:var(--c-malibran)" type="button"><span class="venue-dot"></span>Malibran</button>
+<button aria-pressed="false" class="choice venue" data-venue="3" style="--choice-color:var(--c-tour)" type="button"><span class="venue-dot"></span>Tournée</button>
+</div>
+</div>
+<div class="filter-group">
+<span class="filter-label">Tipo di attività</span>
+<div class="choice-grid" id="typeChoices">
+<button aria-pressed="false" class="choice" data-type="recita" type="button">🎭 Recite</button>
+<button aria-pressed="false" class="choice" data-type="concerto" type="button">🎼 Concerti</button>
+<button aria-pressed="false" class="choice" data-type="generale" type="button">Generali</button>
+<button aria-pressed="false" class="choice" data-type="prove" type="button">Prove</button>
+<button aria-pressed="false" class="choice" data-type="allestimento" type="button">Allestimenti</button>
+<button aria-pressed="false" class="choice" data-type="riposo" type="button">Riposi / ferie</button>
+<button aria-pressed="false" class="choice" data-type="festivo" type="button">Festivi</button>
+<button aria-pressed="false" class="choice" data-type="manifestazione" type="button">◆ Manifestazioni</button>
+</div>
+</div>
+<div class="filter-footer">
+<button class="secondary-button" id="resetFilters" type="button">Togli tutti i filtri</button>
+<button class="primary-button" id="applyFilters" type="button">Mostra risultati</button>
+</div>
+</aside>
+<main class="content" id="mainContent">
+<div class="odg-global-note">
+<div style="display:inline-flex;margin:0 0 8px;padding:5px 9px;border-radius:999px;background:#8B4B87;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em">MANIFESTAZIONI MALIBRAN IN VIOLA</div>
+<strong>Manifestazioni visibili:</strong> la prima voce del prospetto giornaliero è ora mostrata in un riquadro viola <strong>Manifestazioni</strong>. Il pulsante “Apri ODG” apre l’Ordine del Giorno online della data selezionata.
       </div>
-
-      <div class="filter-group">
-        <label class="filter-label" for="daySelect">Scegli un giorno dal calendario</label>
-        <input class="control" type="date" id="daySelect">
-      </div>
-
-      <div class="filter-group">
-        <span class="filter-label">Mese</span>
-        <div class="direct-scroll" id="monthChoices" aria-label="Seleziona un mese"></div>
-      </div>
-
-      <div class="filter-group">
-        <span class="filter-label">Titolo / produzione</span>
-        <div class="direct-scroll title-scroll" id="titleChoices" aria-label="Seleziona un titolo o una produzione"></div>
-      </div>
-
-      <div class="filter-group">
-        <span class="filter-label">Sezione / sede</span>
-        <div class="choice-grid" id="venueChoices">
-          <button class="choice venue" type="button" data-venue="0" style="--choice-color:var(--c-fenice)"><span class="venue-dot"></span>Fenice</button>
-          <button class="choice venue" type="button" data-venue="1" style="--choice-color:var(--c-sale)"><span class="venue-dot"></span>Altre sale</button>
-          <button class="choice venue" type="button" data-venue="2" style="--choice-color:var(--c-malibran)"><span class="venue-dot"></span>Malibran</button>
-          <button class="choice venue" type="button" data-venue="3" style="--choice-color:var(--c-tour)"><span class="venue-dot"></span>Tournée</button>
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <span class="filter-label">Tipo di attività</span>
-        <div class="choice-grid" id="typeChoices">
-          <button class="choice" type="button" data-type="recita">🎭 Recite</button>
-          <button class="choice" type="button" data-type="concerto">🎼 Concerti</button>
-          <button class="choice" type="button" data-type="generale">Generali</button>
-          <button class="choice" type="button" data-type="prove">Prove</button>
-          <button class="choice" type="button" data-type="allestimento">Allestimenti</button>
-          <button class="choice" type="button" data-type="riposo">Riposi / ferie</button>
-          <button class="choice" type="button" data-type="festivo">Festivi</button>
-          <button class="choice" type="button" data-type="manifestazione">◆ Manifestazioni</button>
-        </div>
-      </div>
-
-      <div class="filter-footer">
-        <button class="secondary-button" id="resetFilters" type="button">Togli tutti i filtri</button>
-        <button class="primary-button" id="applyFilters" type="button">Mostra risultati</button>
-      </div>
-    </aside>
-
-    <main class="content" id="mainContent">
-      <div class="odg-global-note">
-      <div style="display:inline-flex;margin:0 0 8px;padding:5px 9px;border-radius:999px;background:#8B4B87;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em">MANIFESTAZIONI MALIBRAN IN VIOLA</div>
-      
-        <strong>Manifestazioni visibili:</strong> la prima voce del prospetto giornaliero è ora mostrata in un riquadro viola <strong>Manifestazioni</strong>. Il pulsante “Apri ODG” apre l’Ordine del Giorno online della data selezionata.
-      </div>
-      <div class="results-head">
-        <div>
-          <div class="results-kicker">Agenda stagione</div>
-          <div class="results-count" id="resultsCount" aria-live="polite"></div>
-        </div>
-        <div class="results-actions">
-          <button class="small-action" id="goToday" type="button">Vai a oggi</button>
-        </div>
-      </div>
-      <div id="risultati"></div>
-      <button class="load-more" id="loadMore" type="button" hidden>Mostra altre giornate ↓</button>
-      <div class="no-results" id="noResults" hidden>
-        <div class="no-results-icon" aria-hidden="true">⌕</div>
-        <strong>Nessun risultato</strong><br>
+<div class="results-head">
+<div>
+<div class="results-kicker">Agenda stagione</div>
+<div aria-live="polite" class="results-count" id="resultsCount">524 giornate</div>
+</div>
+<div class="results-actions">
+<button class="small-action" id="goToday" type="button">Vai a oggi</button>
+</div>
+</div>
+<div id="risultati"><div class="month-heading"><strong>Luglio</strong><span>2026</span></div><article class="day-card sunday manifestation-day" data-date="2026-07-26" id="day-2026-07-26">
+<div class="day-rail">
+<span class="day-number">26</span>
+<span class="day-week">Dom</span>
+<span class="day-month">lug</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-07-26" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-07-26" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 7 · A/R di lun 27/7</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza — Bangarra Dance Theatre h 21</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-07-27" id="day-2026-07-27">
+<div class="day-rail">
+<span class="day-number">27</span>
+<span class="day-week">Lun</span>
+<span class="day-month">lug</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-07-27" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-07-27" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">RIPOSO</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-07-28" id="day-2026-07-28">
+<div class="day-rail">
+<span class="day-number">28</span>
+<span class="day-week">Mar</span>
+<span class="day-month">lug</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge odg-badge">ODG salvato offline</span><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri il dettaglio salvato dell’Ordine del Giorno" class="odg-button" data-odg="2026-07-28" type="button">☰ Dettaglio ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-07-28" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ORCHESTRA E CORO: FERIE · Maestri collaboratori Fen 01: FERIE · Servizi complessi artistici 3 pers: FERIE</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza — 08:00–14:00 arrivo allestimento / MT · 14:00–20:00 fine MT / puntamento luci</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-07-29" id="day-2026-07-29">
+<div class="day-rail">
+<span class="day-number">29</span>
+<span class="day-week">Mer</span>
+<span class="day-month">lug</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-07-29" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-07-29" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 9</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-07-30" id="day-2026-07-30">
+<div class="day-rail">
+<span class="day-number">30</span>
+<span class="day-week">Gio</span>
+<span class="day-month">lug</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-07-30" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-07-30" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 10</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-07-31" id="day-2026-07-31">
+<div class="day-rail">
+<span class="day-number">31</span>
+<span class="day-week">Ven</span>
+<span class="day-month">lug</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-07-31" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-07-31" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 11</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza</span>
+</div>
+</div>
+</article><div class="month-heading"><strong>Agosto</strong><span>2026</span></div><article class="day-card manifestation-day" data-date="2026-08-01" id="day-2026-08-01">
+<div class="day-rail">
+<span class="day-number">1</span>
+<span class="day-week">Sab</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-01" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-01" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 12</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza — Winndance Company h 21</span>
+</div>
+</div>
+</article><article class="day-card sunday manifestation-day" data-date="2026-08-02" id="day-2026-08-02">
+<div class="day-rail">
+<span class="day-number">2</span>
+<span class="day-week">Dom</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-02" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-02" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO (18,45/19,30 visita)</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 13 (19,30/20,15 concerto APO) · A/R di lun 3/8</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza — Winndance Company h 21</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-08-03" id="day-2026-08-03">
+<div class="day-rail">
+<span class="day-number">3</span>
+<span class="day-week">Lun</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-03" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-03" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">RIPOSO</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Biennale Danza</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-04" id="day-2026-08-04">
+<div class="day-rail">
+<span class="day-number">4</span>
+<span class="day-week">Mar</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-04" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-04" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 14</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-05" id="day-2026-08-05">
+<div class="day-rail">
+<span class="day-number">5</span>
+<span class="day-week">Mer</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-05" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-05" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 15</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-06" id="day-2026-08-06">
+<div class="day-rail">
+<span class="day-number">6</span>
+<span class="day-week">Gio</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-06" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-06" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 16</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — ingresso allestimento / montaggio</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-07" id="day-2026-08-07">
+<div class="day-rail">
+<span class="day-number">7</span>
+<span class="day-week">Ven</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-07" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-07" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 17</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — montaggio</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-08" id="day-2026-08-08">
+<div class="day-rail">
+<span class="day-number">8</span>
+<span class="day-week">Sab</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-08" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-08" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 18</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — montaggio</span>
+</div>
+</div>
+</article><article class="day-card sunday" data-date="2026-08-09" id="day-2026-08-09">
+<div class="day-rail">
+<span class="day-number">9</span>
+<span class="day-week">Dom</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-09" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-09" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 19</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — montaggio</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-10" id="day-2026-08-10">
+<div class="day-rail">
+<span class="day-number">10</span>
+<span class="day-week">Lun</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-10" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-10" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">RIPOSO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — riposo</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-11" id="day-2026-08-11">
+<div class="day-rail">
+<span class="day-number">11</span>
+<span class="day-week">Mar</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-11" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-11" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Elisir — Inc. Comp. / musicale / regia · FERIE 20</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — montaggio</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-12" id="day-2026-08-12">
+<div class="day-rail">
+<span class="day-number">12</span>
+<span class="day-week">Mer</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-12" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-12" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Elisir — musicale / regia · FERIE 21</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — montaggio</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-13" id="day-2026-08-13">
+<div class="day-rail">
+<span class="day-number">13</span>
+<span class="day-week">Gio</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-13" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-13" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Elisir — regia · FERIE 22</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — TECNICA / puntamenti</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-14" id="day-2026-08-14">
+<div class="day-rail">
+<span class="day-number">14</span>
+<span class="day-week">Ven</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-14" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-14" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 23</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — regia</span>
+</div>
+</div>
+</article><article class="day-card holiday" data-date="2026-08-15" id="day-2026-08-15">
+<div class="day-rail">
+<span class="day-number">15</span>
+<span class="day-week">Sab</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge holiday-badge">Festivo</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-15" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-15" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">FESTIVO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FESTIVO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">FESTIVO</span>
+</div>
+</div>
+</article><article class="day-card sunday" data-date="2026-08-16" id="day-2026-08-16">
+<div class="day-rail">
+<span class="day-number">16</span>
+<span class="day-week">Dom</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-16" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-16" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 24</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — regia</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-17" id="day-2026-08-17">
+<div class="day-rail">
+<span class="day-number">17</span>
+<span class="day-week">Lun</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-17" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-17" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">RIPOSO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — riposo</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-18" id="day-2026-08-18">
+<div class="day-rail">
+<span class="day-number">18</span>
+<span class="day-week">Mar</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-18" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-18" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 25 · *rientro CORO da ferie (24 gg.)</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — regia</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-19" id="day-2026-08-19">
+<div class="day-rail">
+<span class="day-number">19</span>
+<span class="day-week">Mer</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-19" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-19" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 26</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — regia / luci</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-20" id="day-2026-08-20">
+<div class="day-rail">
+<span class="day-number">20</span>
+<span class="day-week">Gio</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-20" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-20" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">FERIE 27</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — regia + coro / luci</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-21" id="day-2026-08-21">
+<div class="day-rail">
+<span class="day-number">21</span>
+<span class="day-week">Ven</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-21" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-21" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP Elisir — letture · APO Fest · *rientro ORCH. da ferie (28 gg.)</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — ANTEPIANO</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-22" id="day-2026-08-22">
+<div class="day-rail">
+<span class="day-number">22</span>
+<span class="day-week">Sab</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-22" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-22" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — assieme x 2 / luci</span>
+</div>
+</div>
+</article><article class="day-card sunday" data-date="2026-08-23" id="day-2026-08-23">
+<div class="day-rail">
+<span class="day-number">23</span>
+<span class="day-week">Dom</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-23" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-23" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — Assieme 1</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-24" id="day-2026-08-24">
+<div class="day-rail">
+<span class="day-number">24</span>
+<span class="day-week">Lun</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-24" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-24" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — riposo</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-25" id="day-2026-08-25">
+<div class="day-rail">
+<span class="day-number">25</span>
+<span class="day-week">Mar</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-25" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-25" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — luci / assieme h 18/22</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-08-26" id="day-2026-08-26">
+<div class="day-rail">
+<span class="day-number">26</span>
+<span class="day-week">Mer</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-26" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-26" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — <strong>1^ recita h 19 (Diretta Radio3)</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-27" id="day-2026-08-27">
+<div class="day-rail">
+<span class="day-number">27</span>
+<span class="day-week">Gio</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-27" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-27" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP Orchestra Fenice — prove con finalisti concorso violino V. Veneto</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-08-28" id="day-2026-08-28">
+<div class="day-rail">
+<span class="day-number">28</span>
+<span class="day-week">Ven</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-28" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-28" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — <strong>2^ recita h 19</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-29" id="day-2026-08-29">
+<div class="day-rail">
+<span class="day-number">29</span>
+<span class="day-week">Sab</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-29" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-29" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Trasferta Orchestra / Concorso violino Vittorio Veneto h 17</span>
+</div>
+</div>
+</article><article class="day-card sunday manifestation-day" data-date="2026-08-30" id="day-2026-08-30">
+<div class="day-rail">
+<span class="day-number">30</span>
+<span class="day-week">Dom</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-30" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-30" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — <strong>3^ recita h 17</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-08-31" id="day-2026-08-31">
+<div class="day-rail">
+<span class="day-number">31</span>
+<span class="day-week">Lun</span>
+<span class="day-month">ago</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-08-31" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-08-31" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) — prove pom. + sera</span>
+</div>
+</div>
+</article><div class="month-heading"><strong>Settembre</strong><span>2026</span></div><article class="day-card manifestation-day" data-date="2026-09-01" id="day-2026-09-01">
+<div class="day-rail">
+<span class="day-number">1</span>
+<span class="day-week">Mar</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-01" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-01" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — Inc. Comp. / musicale / regia</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — <strong>4^ recita h 19 + smontaggio</strong></span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,45</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-02" id="day-2026-09-02">
+<div class="day-rail">
+<span class="day-number">2</span>
+<span class="day-week">Mer</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-02" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-02" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — musicale / regia · ESP letture x concerto TV</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — smontaggio</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-03" id="day-2026-09-03">
+<div class="day-rail">
+<span class="day-number">3</span>
+<span class="day-week">Gio</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-03" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-03" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · mt Cartier tecnici in 17/23</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — musicale / regia · APO Cena Fest e+f · ESP letture conc. TV</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Elisir — smt / uscita · Pagliacci — arrivo / mnt</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-04" id="day-2026-09-04">
+<div class="day-rail">
+<span class="day-number">4</span>
+<span class="day-week">Ven</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-04" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-04" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · prove Cartier tecnici in 17/23</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — regia · ESP letture orch. Cartier</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — montaggio</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30 · <strong>Concerto Teatro Del Monaco Treviso ore 20 (orchestra) + letture 16,30*</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-05" id="day-2026-09-05">
+<div class="day-rail">
+<span class="day-number">5</span>
+<span class="day-week">Sab</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-05" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-05" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · proiez. LaLaLand/Cartier h 20 + smt</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — regia · APO Cartier</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — montaggio</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30 · *dir. Elisabetta Maschio</span>
+</div>
+</div>
+</article><article class="day-card sunday" data-date="2026-09-06" id="day-2026-09-06">
+<div class="day-rail">
+<span class="day-number">6</span>
+<span class="day-week">Dom</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-06" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-06" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · visita ed esibizione h 19</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — regia</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — montaggio</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-07" id="day-2026-09-07">
+<div class="day-rail">
+<span class="day-number">7</span>
+<span class="day-week">Lun</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-07" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-07" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Pagliacci — riposo · ROS concertazione / musicale coro</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — riposo</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-08" id="day-2026-09-08">
+<div class="day-rail">
+<span class="day-number">8</span>
+<span class="day-week">Mar</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-08" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-08" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ROS conc. coro</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — TECNICA / regia</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-09" id="day-2026-09-09">
+<div class="day-rail">
+<span class="day-number">9</span>
+<span class="day-week">Mer</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-09" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-09" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">FEST — Proiezione + cocktail dalle 18 (1e+1f)</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ROS conc. coro</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — regia + coro</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-10" id="day-2026-09-10">
+<div class="day-rail">
+<span class="day-number">10</span>
+<span class="day-week">Gio</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-10" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-10" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · visita h 18,30</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP Pagliacci — letture · APO Cena (29/26) 80 p</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — regia + coro / preset luci</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-11" id="day-2026-09-11">
+<div class="day-rail">
+<span class="day-number">11</span>
+<span class="day-week">Ven</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-11" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-11" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP Pagliacci — letture</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — regia + coro / luci</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-12" id="day-2026-09-12">
+<div class="day-rail">
+<span class="day-number">12</span>
+<span class="day-week">Sab</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-12" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-12" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — ITA + ANTEPIANO</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Evento Mastercard Misericordia (coro) h 22,30</span>
+</div>
+</div>
+</article><article class="day-card sunday" data-date="2026-09-13" id="day-2026-09-13">
+<div class="day-rail">
+<span class="day-number">13</span>
+<span class="day-week">Dom</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-13" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-13" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — Assieme 1</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-14" id="day-2026-09-14">
+<div class="day-rail">
+<span class="day-number">14</span>
+<span class="day-week">Lun</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-14" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-14" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">APO ZEN Trio Antidote / Redi Hasa (solo e) · ESP eliminatorie 1° flauto</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-15" id="day-2026-09-15">
+<div class="day-rail">
+<span class="day-number">15</span>
+<span class="day-week">Mar</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-15" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-15" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">APO Amici Fenice — Pagliacci</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — Assieme x 2 / luci</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-16" id="day-2026-09-16">
+<div class="day-rail">
+<span class="day-number">16</span>
+<span class="day-week">Mer</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-16" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-16" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · dalle 16 visita</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">APO Scalzotto Circolo h 16 (MK) · SIN ape (10 p) fino 17,15</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — luci / <strong>GENERALE</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-17" id="day-2026-09-17">
+<div class="day-rail">
+<span class="day-number">17</span>
+<span class="day-week">Gio</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-17" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-17" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — Inc. Comp. / mus. / regia · APO Archivio Fano h 20</span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — luci</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-09-18" id="day-2026-09-18">
+<div class="day-rail">
+<span class="day-number">18</span>
+<span class="day-week">Ven</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-18" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-18" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — musicale / regia · Ballo Debuttanti prep./prove</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — <strong>1^ recita h 19 (in abb.) (Diff. Radio3)</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-19" id="day-2026-09-19">
+<div class="day-rail">
+<span class="day-number">19</span>
+<span class="day-week">Sab</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-19" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-19" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · Ballo Debuttanti (NO poltrone platea)</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — musicale / regia + APO a disposizione ballo · letture 15/18 + 19,30/22,30 Callegari</span>
+</div>
+</div>
+</article><article class="day-card sunday manifestation-day" data-date="2026-09-20" id="day-2026-09-20">
+<div class="day-rail">
+<span class="day-number">20</span>
+<span class="day-week">Dom</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-20" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-20" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — regia</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — <strong>2^ recita h 17</strong></span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-21" id="day-2026-09-21">
+<div class="day-rail">
+<span class="day-number">21</span>
+<span class="day-week">Lun</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-21" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-21" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">APO Musikamera Giovani Talenti — Quartetto Rilke h 20 · FINALE CONCORSI ORCHESTRA 1° flauto</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico riposo</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-09-22" id="day-2026-09-22">
+<div class="day-rail">
+<span class="day-number">22</span>
+<span class="day-week">Mar</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-22" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-22" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — regia</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — <strong>3^ recita h 19</strong></span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico arrivo allestimento + montaggio h 14</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-23" id="day-2026-09-23">
+<div class="day-rail">
+<span class="day-number">23</span>
+<span class="day-week">Mer</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-23" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-23" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · visita Bassani h 18,30</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — regia · APO Musikamera h 20 · letture 15/18 + 19,30/22,30 Callegari</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico montaggio</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-09-24" id="day-2026-09-24">
+<div class="day-rail">
+<span class="day-number">24</span>
+<span class="day-week">Gio</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-24" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-24" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · prep wedding</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — regia · APO Musikamera h 20</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — <strong>4^ recita h 19</strong></span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico montaggio</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-25" id="day-2026-09-25">
+<div class="day-rail">
+<span class="day-number">25</span>
+<span class="day-week">Ven</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-25" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-25" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · prep WED · 2 h prova + <strong>CONCERTO Callegari h 20 (su buca)</strong></span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">LOG Dittico — max fino ore 16 + APO disp. Wedding</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico montaggio</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-09-26" id="day-2026-09-26">
+<div class="day-rail">
+<span class="day-number">26</span>
+<span class="day-week">Sab</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-26" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-26" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · Wedding USA + DJ set / no sedie platea</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">APO disp. Wedding</span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — <strong>5^ recita h 17 + smontaggio</strong></span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico TECNICA / regia</span>
+</div>
+</div>
+</article><article class="day-card sunday" data-date="2026-09-27" id="day-2026-09-27">
+<div class="day-rail">
+<span class="day-number">27</span>
+<span class="day-week">Dom</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-27" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-27" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · no sedie platea · <strong>CONCERTO Callegari h 17 (su buca)</strong></span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico regia</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-28" id="day-2026-09-28">
+<div class="day-rail">
+<span class="day-number">28</span>
+<span class="day-week">Lun</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-28" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-28" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · no sedie platea</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">APO ZEN (solo e) · ESP eliminatorie concorso orch. 1° clarino</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico riposo</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-09-29" id="day-2026-09-29">
+<div class="day-rail">
+<span class="day-number">29</span>
+<span class="day-week">Mar</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-29" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-29" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · visita h 15/17 (45 p)</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP <strong>Concerto — letture 6 h 10,30/13,30 + 15/18</strong></span>
+</div><div class="event-row" style="--venue-color:#12606A">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Pagliacci — smontaggio / partenza allestimento</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico regia</span>
+</div>
+</div>
+</article><article class="day-card manifestation-day" data-date="2026-09-30" id="day-2026-09-30">
+<div class="day-rail">
+<span class="day-number">30</span>
+<span class="day-week">Mer</span>
+<span class="day-month">set</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><span class="badge" style="background:#F1E2EF;color:#74416F">Manifestazioni</span><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-09-30" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-09-30" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP <strong>Concerto — letture 6 h 10,30/13,30 + 15/18</strong></span>
+</div><div class="event-row malibran-manifestazione" style="--venue-color:var(--c-manifestazioni)">
+<span class="venue-name">Malibran</span>
+<span class="event-text">Montaggio concerto M° Thomson</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico regia / preset luci</span>
+</div>
+</div>
+</article><div class="month-heading"><strong>Ottobre</strong><span>2026</span></div><article class="day-card" data-date="2026-10-01" id="day-2026-10-01">
+<div class="day-rail">
+<span class="day-number">1</span>
+<span class="day-week">Gio</span>
+<span class="day-month">ott</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-10-01" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-10-01" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · visita h 17/18,30 · 2 h prove + <strong>CONCERTO M° N. Thomson h 20 (su buca) Dir. R3</strong></span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">SIN ape</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico LUCI / regia</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-10-02" id="day-2026-10-02">
+<div class="day-rail">
+<span class="day-number">2</span>
+<span class="day-week">Ven</span>
+<span class="day-month">ott</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-10-02" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-10-02" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO · <strong>CONCERTO M° N. Thomson h 20 (su buca)</strong></span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">Veneto Jazz h 19</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico LUCI / ANTEPIANO</span>
+</div>
+</div>
+</article><article class="day-card" data-date="2026-10-03" id="day-2026-10-03">
+<div class="day-rail">
+<span class="day-number">3</span>
+<span class="day-week">Sab</span>
+<span class="day-month">ott</span>
+</div>
+<div class="day-body">
+<div class="day-meta"><button aria-label="Apri online l’Ordine del Giorno di questa data" class="odg-button odg-online" data-odg="2026-10-03" type="button">↗ Apri ODG</button><button aria-label="Condividi questa giornata" class="share-day" data-share="2026-10-03" title="Condividi" type="button">📤 Condividi</button></div>
+<div class="event-row" style="--venue-color:#962D43">
+<span class="venue-name">Fenice</span>
+<span class="event-text">BLOCCO PALCOSCENICO</span>
+</div><div class="event-row" style="--venue-color:#9B792A">
+<span class="venue-name">Fenice · altre sale</span>
+<span class="event-text">ESP letture Mestre 10,30 · Dittico — letture / ITA · APO workshop 10/13 (no nec.) · Veneto Jazz h 19</span>
+</div><div class="event-row" style="--venue-color:#554786">
+<span class="venue-name">Tournée / altra sede</span>
+<span class="event-text">Goldoni — Dittico luci</span>
+</div>
+</div>
+</article></div>
+<button class="load-more" id="loadMore" type="button">Mostra altre giornate ↓</button>
+<div class="no-results" hidden="" id="noResults">
+<div aria-hidden="true" class="no-results-icon">⌕</div>
+<strong>Nessun risultato</strong><br/>
         Modifichi la ricerca oppure azzeri i filtri.
       </div>
-    </main>
-  </div>
+</main>
 </div>
-
-<div class="odg-dialog" id="odgDialog" role="dialog" aria-modal="true" aria-labelledby="odgDialogTitle" hidden>
-  <section class="odg-panel">
-    <header class="odg-head">
-      <div>
-        <div class="odg-kicker">Ordine del giorno</div>
-        <h2 class="odg-title" id="odgDialogTitle"></h2>
-      </div>
-      <button class="odg-close" id="odgClose" type="button" aria-label="Chiudi dettaglio ODG">✕</button>
-    </header>
-    <div class="odg-content" id="odgContent"></div>
-  </section>
 </div>
-<button class="back-top" id="backTop" type="button" aria-label="Torna all'inizio" hidden>↑</button>
-<div class="update-banner" id="updateBanner" role="status" aria-live="polite" hidden>
-  <div class="update-copy"><strong id="updateTitle">Aggiornamento disponibile</strong><span id="updateMessage">È disponibile una versione più recente del calendario.</span></div>
-  <div class="update-actions"><button class="update-later" id="updateLater" type="button">Dopo</button><button class="update-now" id="updateNow" type="button">Aggiorna</button></div>
+<div aria-labelledby="odgDialogTitle" aria-modal="true" class="odg-dialog" hidden="" id="odgDialog" role="dialog">
+<section class="odg-panel">
+<header class="odg-head">
+<div>
+<div class="odg-kicker">Ordine del giorno</div>
+<h2 class="odg-title" id="odgDialogTitle"></h2>
+</div>
+<button aria-label="Chiudi dettaglio ODG" class="odg-close" id="odgClose" type="button">✕</button>
+</header>
+<div class="odg-content" id="odgContent"></div>
+</section>
+</div>
+<button aria-label="Torna all'inizio" class="back-top" hidden="" id="backTop" type="button">↑</button>
+<div aria-live="polite" class="update-banner" hidden="" id="updateBanner" role="status">
+<div class="update-copy"><strong id="updateTitle">Aggiornamento disponibile</strong><span id="updateMessage">È disponibile una versione più recente del calendario.</span></div>
+<div class="update-actions"><button class="update-later" id="updateLater" type="button">Dopo</button><button class="update-now" id="updateNow" type="button">Aggiorna</button></div>
 </div>
 <div class="version-badge" id="versionBadge">v1.1.0</div>
-
-
 <script>
 const D=[
 ["2026-07-26","BLOCCO PALCOSCENICO","FERIE 7 · A/R di lun 27/7","Biennale Danza — Bangarra Dance Theatre h 21",""],
@@ -1737,11 +3052,10 @@ document.getElementById('q').addEventListener('keydown',event=>{
   if(event.key==='Enter')event.target.blur();
 });
 </script>
-
 <script>
 // --- PWA / aggiornamenti ---
 (() => {
-  const APP_VERSION='1.1.0';
+  const APP_VERSION='1.2.0';
   const updateBtn=document.getElementById('updateBtn');
   const banner=document.getElementById('updateBanner');
   const updateTitle=document.getElementById('updateTitle');
@@ -1830,6 +3144,4 @@ document.getElementById('q').addEventListener('keydown',event=>{
   setInterval(()=>checkForUpdate(true),30*60*1000);
 })();
 </script>
-
-</body>
-</html>
+</body></html>
